@@ -95,11 +95,11 @@ const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
   
           if (otherParticipantId) {
             const otherParticipantData = await fetchUserData(otherParticipantId);
-  
+          
             setOtherParticipantName(otherParticipantData?.name || "Unknown");
             setOtherParticipantImage(otherParticipantData?.profileImage || "/default-image.png");
             setOtherParticipantUsername(otherParticipantData?.username || "Unknown");
-            setOtherParticipantId(otherParticipantData.userId);
+            setOtherParticipantId(otherParticipantData?.userId || null);
           }
         }
       } catch (error) {
