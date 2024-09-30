@@ -2,13 +2,11 @@
   "name": "sunduqy",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sunduqyapp.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next build && next export",
     "start:backend": "ts-node backend/server.ts"
   },
   "dependencies": {
