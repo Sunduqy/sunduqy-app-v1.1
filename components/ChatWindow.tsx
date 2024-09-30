@@ -3,10 +3,19 @@ import moment from 'moment';
 import 'moment/locale/ar'; // Import Arabic locale for moment.js
 import { Message } from '@/components/global/DataTypes';
 import { useAuth } from '@/components/AuthContext';
-import { collection, doc, onSnapshot, query, orderBy, writeBatch } from 'firebase/firestore';
+import { collection, doc, onSnapshot, query, orderBy, writeBatch, getDocs } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase';
 import Dropdown from './global/Dropdown';
 import Image from 'next/image';
+
+export async function generateStaticParams() {
+  const chatsSnapshot = await getDocs(collection(db, 'conversations'));
+  const chatIds = chatsSnapshot.docs.map(doc => ({ chatId: doc.id }));
+
+  return chatIds.map(chat => ({
+    chatId: chat.chatId,
+  }));
+}
 
 const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
   const { user } = useAuth();
