@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import ChatWindow from '@/components/ChatWindow';
 import ChatList from '@/components/ChatList';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { db } from '@/app/lib/firebase';
 
 const ChatPage: React.FC = () => {
   const { id } = useParams() as { id: string };
@@ -14,18 +16,25 @@ const ChatPage: React.FC = () => {
 
   useEffect(() => {
     const fetchChats = async () => {
-      const userId = id; // Replace with actual user ID from context or props
-      const response = await fetch(`/api/chat?userId=${userId}`);
+      const userId = 'current-user-id'; // Replace with actual user ID from context or props
 
-      if (!response.ok) {
-        console.error("Failed to fetch chats");
+      try {
+        // Query to get user's chats
+        const chatsRef = collection(db, 'conversations');
+        const q = query(chatsRef, where('participants', 'array-contains', userId));
+        const snapshot = await getDocs(q);
+
+        const chatData = snapshot.docs.map((docSnapshot) => ({
+          id: docSnapshot.id,
+          ...docSnapshot.data(),
+        }));
+
+        setChats(chatData);
         setLoading(false);
-        return;
+      } catch (error) {
+        console.error('Failed to fetch chats:', error);
+        setLoading(false);
       }
-
-      const data = await response.json();
-      setChats(data);
-      setLoading(false);
     };
 
     fetchChats();
@@ -54,7 +63,6 @@ const ChatPage: React.FC = () => {
         </div>
       </div>
     </div>
-
   );
 };
 
