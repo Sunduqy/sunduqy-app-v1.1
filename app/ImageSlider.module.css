@@ -1,0 +1,36 @@
+.customDots {
+  position: absolute;
+  bottom: 10px; /* Adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex !important;
+  justify-content: center;
+  width: 4%;
+}
+
+.slick-dots li.slick-active div {
+  background-color: #9CA3AF !important
+}
+
+.slick-dots li div {
+  background-color: #1F2A37;
+  transition: background-color 0.3s ease;
+}
+
+.slick-dots li {
+  margin: 0 2px !important;
+}
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  width: 100%; 
+  max-width: 800px; 
+  height: 400px; 
+  overflow: hidden;
+  position: relative;
+}
