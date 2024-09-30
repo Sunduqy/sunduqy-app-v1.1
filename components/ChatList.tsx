@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/ar';
 import { useAuth } from '@/components/AuthContext';
+import Image from 'next/image';
 
 interface Chat {
   id: string;
@@ -77,7 +78,7 @@ const ChatList: React.FC<ChatListProps> = ({ onSelectChat }) => {
               className="flex flex-row items-start justify-between py-2 px-4 cursor-pointer border-b mb-2 border-b-hover-blue relative hover:bg-border-lighter-blue lg:hover:bg-border-light-blue"
             >
               <div className='flex flex-row justify-between'>
-                <img src={chat.otherParticipantImage} alt={chat.otherParticipantName} className="w-12 h-12 rounded-full" />
+                <Image src={chat.otherParticipantImage} alt={chat.otherParticipantName} className="w-12 h-12 rounded-full" />
                 <div className='flex flex-col justify-start items-start mr-3'>
                   <h1 className='text-dark-blue font-avenir-arabic font-bolder'>{chat.otherParticipantName}</h1>
                   <h1 className='text-dark-blue font-avenir-arabic font-light text-xs'>{chat.otherParticipantUsername}</h1>

@@ -1,23 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
-import multer from 'multer';
 import { Readable } from 'stream';
 
+// Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// Multer configuration to store files in memory
-const upload = multer({ storage: multer.memoryStorage() });
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
+// Helper function to convert a buffer to a readable stream
 const bufferToStream = (buffer: Buffer) => {
   const stream = new Readable();
   stream.push(buffer);
@@ -25,19 +17,25 @@ const bufferToStream = (buffer: Buffer) => {
   return stream;
 };
 
+// Helper function to parse form data
 const parseFormData = async (req: NextRequest) => {
   const form = new FormData();
   const data = await req.formData();
-  for (const [key, value] of data.entries()) {
+  
+  // Convert FormData entries to an array
+  const entries = Array.from(data.entries());
+  
+  for (const [key, value] of entries) {
     form.append(key, value);
   }
+  
   return form;
 };
 
+// POST request handler
 export async function POST(req: NextRequest) {
   try {
     const formData = await parseFormData(req);
-
     const file = formData.get('file') as File | null;
 
     if (!file) {
@@ -67,6 +65,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: uploadResponse.secure_url }, { status: 200 });
   } catch (error) {
     console.error('Cloudinary Upload Error:', error);
-    return NextResponse.json({ error: 'Failed to upload image', details: error.message }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to upload image', details: error }, { status: 500 });
   }
 }
+
+// Export dynamic routing options if needed (adjust according to your requirements)
+export const dynamic = 'force-dynamic'; // or 'force-static' based on your needs

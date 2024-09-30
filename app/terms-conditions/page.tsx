@@ -6,8 +6,8 @@ const terms = () => {
                 <p className="font-avenir-arabic font-light text-dark-blue text-lg">مرحبًا بكم في صندوقي! يحدد هذا المستند الشروط والأحكام التي تنظم استخدامكم لموقعنا. باستخدامكم لموقعنا، فإنكم توافقون على الالتزام بهذه الشروط. إذا كنتم لا توافقون على هذه الشروط، يرجى عدم استخدام الموقع.</p>
                 <div className="gap-2">
                     <h3 className="font-avenir-arabic font-bolder text-dark-blue text-xl">1. تعريفات</h3>
-                    <p className="font-avenir-arabic font-light text-dark-blue">"صندوقي": يشير إلى الموقع الإلكتروني الخاص بنا الذي يتيح للمستخدمين بيع وشراء المنتجات المستعملة.
-                        "المستخدم": أي شخص يستخدم موقع صندوقي.</p>
+                    <p className="font-avenir-arabic font-light text-dark-blue">صندوقي: يشير إلى الموقع الإلكتروني الخاص بنا الذي يتيح للمستخدمين بيع وشراء المنتجات المستعملة.
+                        المستخدم: أي شخص يستخدم موقع صندوقي.</p>
                 </div>
                 <div className="gap-2">
                     <h3 className="font-avenir-arabic font-bolder text-dark-blue text-xl">2. الأهلية</h3>

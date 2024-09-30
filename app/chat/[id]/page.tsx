@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import ChatWindow from '@/components/ChatWindow';
 import ChatList from '@/components/ChatList';
@@ -8,6 +8,28 @@ import ChatList from '@/components/ChatList';
 const ChatPage: React.FC = () => {
   const { id } = useParams() as { id: string };
   const router = useRouter();
+
+  const [chats, setChats] = useState<any[]>([]); // State to hold chat data
+  const [loading, setLoading] = useState(true); // State to track loading
+
+  useEffect(() => {
+    const fetchChats = async () => {
+      const userId = id; // Replace with actual user ID from context or props
+      const response = await fetch(`/api/chat?userId=${userId}`);
+
+      if (!response.ok) {
+        console.error("Failed to fetch chats");
+        setLoading(false);
+        return;
+      }
+
+      const data = await response.json();
+      setChats(data);
+      setLoading(false);
+    };
+
+    fetchChats();
+  }, []);
 
   return (
     <div className="flex flex-col lg:h-4/5 h-full w-full">

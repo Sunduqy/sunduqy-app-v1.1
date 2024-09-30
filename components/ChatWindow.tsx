@@ -6,6 +6,7 @@ import { useAuth } from '@/components/AuthContext';
 import { collection, doc, onSnapshot, query, orderBy, writeBatch } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase';
 import Dropdown from './global/Dropdown';
+import Image from 'next/image';
 
 const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
   const { user } = useAuth();
@@ -151,7 +152,7 @@ const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
           <a href='/chat'>
             <i className="ri-arrow-right-line text-2xl text-dark-blue lg:hidden flex"></i>
           </a>
-          <img src={otherParticipantImage || "/default-image.png"} alt={otherParticipantName || "Unknown"} className="w-12 h-12 rounded-full mr-4" />
+          <Image src={otherParticipantImage || "/default-image.png"} alt={otherParticipantName || "Unknown"} className="w-12 h-12 rounded-full mr-4" />
           <div className='flex flex-col justify-start items-start mr-4'>
             <h1 className="font-avenir-arabic font-bold text-dark-blue">{otherParticipantName || "Unknown"}</h1>
             <h1 className="font-avenir-arabic font-light text-xs text-dark-blue">{otherParticipantUsername || "Unknown"}</h1>

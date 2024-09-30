@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
   images: {
     domains: ['f.nooncdn.com', 'media-ix.onshobbak.net', 'i.ibb.co', 'mrsanduq.s3.me-south-1.amazonaws.com', 'ik.imagekit.io', 'res.cloudinary.com', 'asset.cloudinary.com'],
   },

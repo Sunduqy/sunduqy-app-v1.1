@@ -57,10 +57,12 @@ const SearchResultsPage = () => {
 
                 // Filter products based on the keyword
                 const filteredProducts = productsList.filter(product => {
-                    return (
-                        product.title.toLowerCase().includes(keyword.toLowerCase()) ||
-                        product.description.toLowerCase().includes(keyword.toLowerCase())
-                    );
+                    if (keyword) {
+                        return (
+                            product.title.toLowerCase().includes(keyword.toLowerCase()) ||
+                            product.description.toLowerCase().includes(keyword.toLowerCase())
+                        );
+                    }
                 });
 
                 setProducts(filteredProducts.slice(0, visibleProductsCount)); // Initially show 50 products

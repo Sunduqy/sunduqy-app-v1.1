@@ -118,7 +118,7 @@ const CategoryPage = () => {
     if (categoryName) {
       fetchCategoryData();
     }
-  }, [categoryName]);
+  }, [decodedCategoryName]);
 
   const handleApplyFilters = (filters: {
     priceRange: [string, string];
