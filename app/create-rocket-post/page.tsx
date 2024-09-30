@@ -10,6 +10,7 @@ import SubmitionStatus from '@/components/post/SubmitionStatus';
 import { useAuth } from '@/components/AuthContext';
 import LoadingAnimation from '@/components/LoadingAnimation';
 import { Category } from '@/components/post/PostsCategories';
+import { v2 as cloudinary } from 'cloudinary';
 
 export default function CreateRocketPost() {
 
@@ -63,11 +64,13 @@ export default function CreateRocketPost() {
     return false;
   };
 
+  cloudinary.config({
+    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+    api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+  });
+
   const handleUpload = async (): Promise<string[]> => {
-    if (previewImages.length === 0) return [];
-
-    setUploading(true);
-
     try {
       const uploadedImageUrls: string[] = [];
 
@@ -75,22 +78,25 @@ export default function CreateRocketPost() {
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch('/api/uploadToCloudinary', {
-          method: 'POST',
-          body: formData,
+        const uploadResponse = await new Promise<any>((resolve, reject) => {
+          cloudinary.uploader.upload_stream(
+            {
+              upload_preset: 'ml_default',
+              transformation: [
+                { width: 620, height: 620, crop: 'limit', quality: 'auto:low', fetch_format: 'auto' },
+                { overlay: 'watermark_sahm_hyt2as', gravity: 'south_east', x: 10, y: 10 },
+              ],
+            },
+            (error: any, result: any) => {
+              if (error) return reject(error);
+              resolve(result);
+            }
+          ).end(file); // stream the file directly
         });
 
-        if (response.status !== 200) {
-          const errorDetails = await response.text();
-          console.error("Error response from server:", errorDetails);
-          throw new Error('Failed to upload image');
-        }
-
-        const data = await response.json();
-        uploadedImageUrls.push(data.url);
+        uploadedImageUrls.push(uploadResponse.secure_url);
       }
 
-      setSelectedImages(uploadedImageUrls);
       return uploadedImageUrls;
     } catch (error) {
       console.error("Error during upload:", error);

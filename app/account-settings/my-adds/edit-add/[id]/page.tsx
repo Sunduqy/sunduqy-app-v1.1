@@ -9,8 +9,9 @@ import { Post } from '@/components/global/DataTypes';
 import FailureToast from '@/components/global/FailureToast';
 import LoadingAnimation from '@/components/LoadingAnimation';
 import SuccessToast from '@/components/global/SuccessToast';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase'; // Import Firestore instance
+import { v2 as cloudinary } from 'cloudinary';
 
 const EditAdd = () => {
     const params = useParams();
@@ -70,6 +71,12 @@ const EditAdd = () => {
         }
     }, [id]);
 
+    cloudinary.config({
+        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+        api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+    });
+
     const handleUpload = async (): Promise<string[]> => {
         try {
             const uploadedImageUrls: string[] = [];
@@ -78,19 +85,23 @@ const EditAdd = () => {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                const response = await fetch('/api/uploadToCloudinary', {
-                    method: 'POST',
-                    body: formData,
+                const uploadResponse = await new Promise<any>((resolve, reject) => {
+                    cloudinary.uploader.upload_stream(
+                        {
+                            upload_preset: 'ml_default',
+                            transformation: [
+                                { width: 620, height: 620, crop: 'limit', quality: 'auto:low', fetch_format: 'auto' },
+                                { overlay: 'watermark_sahm_hyt2as', gravity: 'south_east', x: 10, y: 10 },
+                            ],
+                        },
+                        (error: any, result: any) => {
+                            if (error) return reject(error);
+                            resolve(result);
+                        }
+                    ).end(file); // stream the file directly
                 });
 
-                if (response.status !== 200) {
-                    const errorDetails = await response.text();
-                    console.error("Error response from server:", errorDetails);
-                    throw new Error('Failed to upload image');
-                }
-
-                const data = await response.json();
-                uploadedImageUrls.push(data.url);
+                uploadedImageUrls.push(uploadResponse.secure_url);
             }
 
             return uploadedImageUrls;
@@ -136,22 +147,11 @@ const EditAdd = () => {
 
             updatedData.images = [...uploadedImages, ...selectedImages].filter(url => !imagesToDelete.includes(url)); // Preserve old images except the ones marked for deletion
 
-            // Send the update request
-            const response = await fetch('/api/updatePost', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id, data: updatedData, imagesToDelete }), // Send images to delete
-            });
+            // Update Firestore post document
+            const postDocRef = doc(db, 'posts', id);
+            await updateDoc(postDocRef, updatedData);
 
-            if (response.ok) {
-                const result = await response.json();
-                setMessage('تم تعديل إعلانك بنجاح');
-            } else {
-                const result = await response.json();
-                setMessage(result.message || 'حدث خطأ ما أثناء تعديل الإعلان');
-            }
+            setMessage('تم تعديل إعلانك بنجاح');
             setShowToast(true);
         } catch (error) {
             console.error('Error submitting post:', error);
