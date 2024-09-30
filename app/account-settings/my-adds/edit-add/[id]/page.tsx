@@ -9,9 +9,12 @@ import { Post } from '@/components/global/DataTypes';
 import FailureToast from '@/components/global/FailureToast';
 import LoadingAnimation from '@/components/LoadingAnimation';
 import SuccessToast from '@/components/global/SuccessToast';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/app/lib/firebase'; // Import Firestore instance
 
 const EditAdd = () => {
-    const { id } = useParams();
+    const params = useParams();
+    const id = Array.isArray(params.id) ? params.id[0] : params.id;
 
     const [postData, setPostData] = useState<Post | null>(null);
     const [title, setTitle] = useState('');
@@ -36,27 +39,28 @@ const EditAdd = () => {
     const [submitLoading, setSubmitLoading] = useState(false);
     const [imagesToDelete, setImagesToDelete] = useState<string[]>([]); // Track images marked for deletion
 
+    // Fetch product data directly using Firestore on the client side
     useEffect(() => {
         const fetchProductData = async () => {
-            try {
-                const response = await fetch('/api/getProductDetails', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ productId: id }),
-                });
+            if (!id) {
+                setMessage('Invalid product ID.');
+                setShowToast(true);
+                return;
+            }
 
-                if (response.ok) {
-                    const data = await response.json();
-                    setPostData(data.product);
-                } else {
-                    const result = await response.json();
-                    setMessage(result.message);
+            try {
+                const productDocRef = doc(db, 'posts', id); // Fetch post by ID
+                const productSnapshot = await getDoc(productDocRef);
+                if (!productSnapshot.exists()) {
+                    setMessage('Product not found');
                     setShowToast(true);
+                    return;
                 }
+
+                const productData = productSnapshot.data();
+                setPostData(productData as Post);
             } catch (error) {
-                setMessage('حدث خطأ ما أثناء التحميل, يرجى المحاولة مرة أخرى');
+                setMessage('Error fetching product data. Please try again.');
                 setShowToast(true);
             }
         };
@@ -233,15 +237,8 @@ const EditAdd = () => {
                 visible={showToast}
                 onClose={() => setShowToast(false)}
             />
-            <button onClick={handleSubmit} className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#BAE6FD] border border-[#BAE6FD] my-4 rounded-lg w-full" disabled={submitLoading}>
-                {submitLoading ? (
-                    <LoadingAnimation />
-                ) : (
-                    <>
-                        <i className="ri-edit-circle-fill text-xl text-dark-blue"></i>
-                        <h1 className='font-avenir-arabic font-light text-dark-blue text-lg'>تعديل الإعلان</h1>
-                    </>
-                )}
+            <button onClick={handleSubmit} className="flex flex-row justify-center items-center bg-blue-500 hover:bg-blue-600 text-white rounded-md px-6 py-3">
+                {submitLoading ? <LoadingAnimation /> : 'تعديل الإعلان'}
             </button>
         </div>
     );
