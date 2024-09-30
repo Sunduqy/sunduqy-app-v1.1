@@ -9,7 +9,7 @@ import { Post } from '@/components/global/DataTypes';
 import FailureToast from '@/components/global/FailureToast';
 import LoadingAnimation from '@/components/LoadingAnimation';
 import SuccessToast from '@/components/global/SuccessToast';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase'; // Import Firestore instance
 import { v2 as cloudinary } from 'cloudinary';
 
@@ -39,6 +39,7 @@ const EditAdd = () => {
     const [showToast, setShowToast] = useState<boolean>(false);
     const [submitLoading, setSubmitLoading] = useState(false);
     const [imagesToDelete, setImagesToDelete] = useState<string[]>([]); // Track images marked for deletion
+    const [chatIds, setChatIds] = useState<string[]>([]); // State for chat IDs
 
     // Fetch product data directly using Firestore on the client side
     useEffect(() => {
@@ -60,6 +61,14 @@ const EditAdd = () => {
 
                 const productData = productSnapshot.data();
                 setPostData(productData as Post);
+
+                // Fetch chat IDs associated with the post
+                const chatCollectionRef = collection(db, 'chats'); // Assuming chat IDs are stored in a 'chats' collection
+                const chatSnapshot = await getDocs(chatCollectionRef);
+                const chatIdsList = chatSnapshot.docs
+                    .filter(chatDoc => chatDoc.data().postId === id) // Filter chats by post ID
+                    .map(chatDoc => chatDoc.id); // Get chat IDs
+                setChatIds(chatIdsList);
             } catch (error) {
                 setMessage('Error fetching product data. Please try again.');
                 setShowToast(true);
