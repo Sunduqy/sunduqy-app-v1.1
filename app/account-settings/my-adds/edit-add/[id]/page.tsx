@@ -71,12 +71,6 @@ const EditAdd = () => {
         }
     }, [id]);
 
-    cloudinary.config({
-        cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-        api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-        api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
-    });
-
     const handleUpload = async (): Promise<string[]> => {
         try {
             const uploadedImageUrls: string[] = [];
@@ -85,23 +79,19 @@ const EditAdd = () => {
                 const formData = new FormData();
                 formData.append('file', file);
 
-                const uploadResponse = await new Promise<any>((resolve, reject) => {
-                    cloudinary.uploader.upload_stream(
-                        {
-                            upload_preset: 'ml_default',
-                            transformation: [
-                                { width: 620, height: 620, crop: 'limit', quality: 'auto:low', fetch_format: 'auto' },
-                                { overlay: 'watermark_sahm_hyt2as', gravity: 'south_east', x: 10, y: 10 },
-                            ],
-                        },
-                        (error: any, result: any) => {
-                            if (error) return reject(error);
-                            resolve(result);
-                        }
-                    ).end(file); // stream the file directly
+                const response = await fetch('/api/uploadToCloudinary', {
+                    method: 'POST',
+                    body: formData,
                 });
 
-                uploadedImageUrls.push(uploadResponse.secure_url);
+                if (response.status !== 200) {
+                    const errorDetails = await response.text();
+                    console.error("Error response from server:", errorDetails);
+                    throw new Error('Failed to upload image');
+                }
+
+                const data = await response.json();
+                uploadedImageUrls.push(data.url);
             }
 
             return uploadedImageUrls;
