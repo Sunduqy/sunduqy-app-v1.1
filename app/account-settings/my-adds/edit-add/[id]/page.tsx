@@ -10,17 +10,6 @@ import FailureToast from '@/components/global/FailureToast';
 import LoadingAnimation from '@/components/LoadingAnimation';
 import SuccessToast from '@/components/global/SuccessToast';
 
-export async function generateStaticParams() {
-    // Fetch your data here (for example, fetching all post IDs from your API)
-    const response = await fetch('/api/getAllProductIds'); // Example API endpoint
-    const data = await response.json();
-
-    // Map over the fetched data to create an array of params
-    return data.ids.map((id: string) => ({
-        id, // The dynamic segment in the URL
-    }));
-}
-
 const EditAdd = () => {
     const { id } = useParams();
 
