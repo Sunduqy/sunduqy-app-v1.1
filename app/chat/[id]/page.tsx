@@ -41,7 +41,7 @@ const ChatPage: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col lg:h-4/5 h-full w-full">
+    <div className="flex flex-col lg:h-4/5 h-screen w-full">
       <div className="flex lg:flex-row flex-col w-full max-w-7xl mx-auto md:px-2 md:py-5 p-0 gap-4 h-full">
         <div className="lg:flex flex-col justify-start border rounded-2xl border-hover-blue bg-border-lighter-blue lg:w-1/3 w-auto hidden overflow-y-scroll no-scrollbar">
           <div className="flex w-full flex-col h-full">

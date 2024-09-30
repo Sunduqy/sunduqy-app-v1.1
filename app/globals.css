@@ -54,6 +54,10 @@ input::placeholder {
   max-width: 842px;
 }
 
+.max-h-3halfxl {
+  max-height: 842px;
+}
+
 .w-3halfxl {
   width: 832px;
 }

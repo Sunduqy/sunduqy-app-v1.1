@@ -93,7 +93,7 @@ export default function MyAdds() {
       setLastVisible(null); // Reset pagination
       fetchPosts();
     }
-  }, [user, currentPage, selectedSegment, fetchPosts]);
+  }, [user, currentPage, selectedSegment ]);
 
   const rocketPosts = posts.filter(post => post.isRocketPost);
   const nonRocketPosts = posts.filter(post => !post.isRocketPost);

@@ -3,7 +3,7 @@ import moment from 'moment';
 import 'moment/locale/ar'; // Import Arabic locale for moment.js
 import { Message } from '@/components/global/DataTypes';
 import { useAuth } from '@/components/AuthContext';
-import { collection, doc, onSnapshot, query, orderBy, writeBatch, getDocs } from 'firebase/firestore';
+import { collection, doc, onSnapshot, query, orderBy, writeBatch, getDocs, getDoc, where, addDoc } from 'firebase/firestore';
 import { db } from '@/app/lib/firebase';
 import Dropdown from './global/Dropdown';
 import Image from 'next/image';
@@ -49,7 +49,7 @@ const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
       const updatedMessages: Message[] = [];
       querySnapshot.forEach((doc) => {
         const data = doc.data();
-        const timestamp = data.timestamp instanceof Date ? data.timestamp : data.timestamp.toDate(); // Convert Firestore Timestamp to JavaScript Date
+        const timestamp = data.timestamp instanceof Date ? data.timestamp : data.timestamp.toDate();
         updatedMessages.push({ id: doc.id, ...data, timestamp } as Message);
       });
       setMessages(updatedMessages);
@@ -61,33 +61,54 @@ const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
       }
     });
 
-    // Cleanup listener on unmount
     return () => unsubscribe();
-  }, [chatId, user?.uid]); // Ensure dependencies are correct
+  }, [chatId, user?.uid]);
 
   useEffect(() => {
     const fetchOtherParticipantData = async () => {
       if (!chatId || !user?.uid) return;
-
+  
       try {
-        const response = await fetch(`/api/chatLists?userId=${user?.uid}`);
-        if (response.ok) {
-          const chatList = await response.json();
-          const currentChat = chatList.find((chat: any) => chat.id === chatId);
-          if (currentChat) {
-            setOtherParticipantName(currentChat.otherParticipantName);
-            setOtherParticipantImage(currentChat.otherParticipantImage);
-            setOtherParticipantUsername(currentChat.otherParticipantUsername);
-            setOtherParticipantId(currentChat.otherParticipantId);
+        const fetchUserData = async (userId: string) => {
+          const userDoc = await getDoc(doc(db, 'users', userId));
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            return {
+              name: `${data?.firstName} ${data?.lastName}`,
+              username: data?.username,
+              profileImage: data?.profileImage || "/default-image.png",
+              userId: userId,
+            };
+          } else {
+            return null;
+          }
+        };
+  
+        const chatsRef = collection(db, 'conversations');
+        const q = query(chatsRef, where('participants', 'array-contains', user?.uid));
+        const snapshot = await getDocs(q);
+        const currentChat = snapshot.docs.find((docSnapshot) => docSnapshot.id === chatId);
+  
+        if (currentChat) {
+          const data = currentChat.data();
+          const otherParticipantId = data.participants.find((p: string) => p !== user?.uid);
+  
+          if (otherParticipantId) {
+            const otherParticipantData = await fetchUserData(otherParticipantId);
+  
+            setOtherParticipantName(otherParticipantData?.name || "Unknown");
+            setOtherParticipantImage(otherParticipantData?.profileImage || "/default-image.png");
+            setOtherParticipantUsername(otherParticipantData?.username || "Unknown");
+            setOtherParticipantId(otherParticipantData.userId);
           }
         }
       } catch (error) {
         console.error('Failed to fetch participant data:', error);
       }
     };
-
+  
     fetchOtherParticipantData();
-  }, [chatId, user?.uid]); // Ensure dependencies are correct
+  }, [chatId, user?.uid]);
 
   const markMessagesAsRead = async (messageIds: string[]) => {
     try {
@@ -104,25 +125,19 @@ const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
 
   const handleSendMessage = async () => {
     if (newMessage.trim() === '') return;
-
+  
     try {
-      const response = await fetch(`/api/chatLists/${chatId}/messages`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          senderId: user?.uid,
-          senderName: user?.displayName,
-          text: newMessage,
-        }),
-      });
-
-      if (response.ok) {
-        setNewMessage('');
-      } else {
-        console.error('Failed to send message:', await response.json());
-      }
+      const messageRef = collection(db, `conversations/${chatId}/messages`);
+      const newMessageData = {
+        senderId: user?.uid,
+        senderName: user?.displayName,
+        text: newMessage,
+        timestamp: new Date(),
+        read: false,
+      };
+  
+      await addDoc(messageRef, newMessageData);
+      setNewMessage('');
     } catch (error) {
       console.error('Failed to send message:', error);
     }
@@ -155,13 +170,13 @@ const ChatWindow: React.FC<{ chatId: string }> = ({ chatId }) => {
   const groupedMessages = groupMessagesByDate();
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex flex-col h-full w-full max-h-3halfxl">
       <div className="flex-shrink-0 justify-between flex items-center p-4 border-b bg-border-lighter-blue rounded-t-2xl">
         <div className='flex flex-row justify-start items-center gap-3'>
           <a href='/chat'>
             <i className="ri-arrow-right-line text-2xl text-dark-blue lg:hidden flex"></i>
           </a>
-          <Image src={otherParticipantImage || "/default-image.png"} alt={otherParticipantName || "Unknown"} className="w-12 h-12 rounded-full mr-4" />
+          <Image src={otherParticipantImage || "/default-image.png"} alt={otherParticipantName || "Unknown"} width={200} height={200} className="w-12 h-12 rounded-full mr-4" />
           <div className='flex flex-col justify-start items-start mr-4'>
             <h1 className="font-avenir-arabic font-bold text-dark-blue">{otherParticipantName || "Unknown"}</h1>
             <h1 className="font-avenir-arabic font-light text-xs text-dark-blue">{otherParticipantUsername || "Unknown"}</h1>
