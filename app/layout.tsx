@@ -22,10 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="ar" dir="rtl">
-        <body className={poppins.className}>
-          {children}
-        </body>
-      </html>
+    <html lang="ar" dir="rtl">
+      <body className={poppins.className}>
+        <AuthProvider>
+          <ClientLayout>{children}</ClientLayout>
+        </AuthProvider>
+      </body>
+    </html>
   );
 }
