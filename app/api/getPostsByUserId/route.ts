@@ -16,7 +16,6 @@ export async function GET(request: NextRequest) {
 
         const posts = querySnapshot.docs.map(doc => {
             const data = doc.data();
-
             const createdAt = data.postDate instanceof Timestamp ? data.postDate.toDate() : null;
             const formattedDate = createdAt ? formatDate(createdAt) : 'تاريخ غير معروف';
 

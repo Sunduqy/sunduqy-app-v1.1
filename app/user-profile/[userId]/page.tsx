@@ -61,8 +61,11 @@ const Page = () => {
                     method: 'GET',
                 });
 
+                // Check if the response is OK (status in the range 200-299)
                 if (response.ok) {
                     const data = await response.json();
+
+                    // Check if the posts array is present and has items
                     if (data.posts && data.posts.length > 0) {
                         setUserPosts(data.posts);
                     } else {
@@ -70,11 +73,14 @@ const Page = () => {
                         setIsToastVisible(true);
                     }
                 } else {
+                    // Handle non-2xx responses
                     const result = await response.json();
                     setMessage(result.message || 'Failed to fetch posts');
                     setIsToastVisible(true);
                 }
             } catch (error) {
+                // Catch any errors thrown during the fetch or processing
+                console.error('Error fetching user posts:', error); // Log the error for debugging
                 setMessage('Unexpected error. Please try again later.');
                 setIsToastVisible(true);
             }
@@ -252,7 +258,7 @@ const Page = () => {
                 />
             )}
             {isRatingFormModalOpen && (
-                <RatingFormModal isOpen={isRatingFormModalOpen} onClose={toggleRatingFormModal} userId={userId}/>
+                <RatingFormModal isOpen={isRatingFormModalOpen} onClose={toggleRatingFormModal} userId={userId} />
             )}
             <RegistrationModal isOpen={isRegistrationModalOpen} onClose={toggleRegistrationModal} />
         </div>
