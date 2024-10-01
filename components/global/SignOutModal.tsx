@@ -40,10 +40,10 @@ const SignOutModal: React.FC<SignOutModalProps> = ({ isOpen, onClose }) => {
                 <div className='flex flex-col items-center p-2 py-4 gap-2 mt-4'>
                     <h2 className="text-lg font-bold font-avenir-arabic text-dark-blue text-center">هل أنت متأكد أنك تريد تسجيل الخروج؟ يمكنك تسجيل الدخول في أي وقت تريد</h2>
                     <div className='flex flex-row justify-center gap-4 items-center w-full'>
-                        <button onClick={handleSignOut} className='rounded-lg items-center justify-center bg-red-600 p-4 mt-4 hover:bg-opacity-80'>
+                        <button onClick={handleSignOut} className='rounded-full items-center justify-center bg-red-600 p-4 mt-4 hover:bg-opacity-80'>
                             <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>تسجيل الخروج</p>
                         </button>
-                        <button onClick={handleCloseModal} className='rounded-lg items-center justify-center bg-light-blue p-4 mt-4 hover:bg-opacity-80'>
+                        <button onClick={handleCloseModal} className='rounded-full items-center justify-center bg-dark-blue bg-opacity-10 p-4 mt-4 hover:bg-opacity-80'>
                             <p className='text-sm font-bold font-avenir-arabic text-dark-blue'>إلغاء الأمر</p>
                         </button>
                     </div>

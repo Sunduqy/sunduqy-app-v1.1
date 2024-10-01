@@ -93,7 +93,7 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
             <div className="z-50 w-full max-w-7xl items-center justify-between flex flex-row md:px-2 md:py-5 px-4 py-2">
                 <div className="flex flex-row justify-center items-center gap-3">
                     <a href="/">
-                        <Image src={'/HEADER-LOGO.svg'} width={100} height={100} alt="SahmBay Logo" className="w-36 h-20" />
+                        <Image src={'/HEADER-LOGO.svg'} width={100} height={100} alt="SahmBay Logo" className="w-36 h-12" />
                     </a>
                     {!user ? (
                         <button

@@ -13,11 +13,9 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ message: 'Product not found' }, { status: 404 });
         }
         const productData = productSnapshot.data();
-        console.log("Product Data:", productData);
 
         // Fetch user details based on userId in productData
         const userId = productData.userId;
-        console.log("User ID from product data:", userId);
         const userDocRef = doc(db, 'users', userId);
         const userSnapshot = await getDoc(userDocRef);
         if (!userSnapshot.exists()) {

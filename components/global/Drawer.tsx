@@ -103,7 +103,7 @@ const Drawer = ({ isOpen, onClose }: DrawerProps) => {
                     </div>
                     <div className='flex flex-col justify-start gap-3 items-start p-4'>
                         {user ? (
-                            <a href="/account-settings" className="flex flex-row justify-center items-start gap-2 px-4 py-2 rounded-lg bg-hover-blue">
+                            <a href="/account-settings" className="flex flex-row justify-center items-start gap-2 px-4 py-2 rounded-full bg-dark-blue bg-opacity-10">
                                 <div className="p-0.5 rounded-full border-dark-blue border-2">
                                     <Image src={userData.profileImage} alt="Avatar" width={46} height={46} className="w-10 h-10 rounded-full" />
                                 </div>
@@ -116,12 +116,12 @@ const Drawer = ({ isOpen, onClose }: DrawerProps) => {
                                 </div>
                             </a>
                         ) : (
-                            <button onClick={toggleRegistrationModal} className="flex flex-row justify-center items-center gap-2 px-4 py-2 rounded-lg bg-dark-blue">
+                            <button onClick={toggleRegistrationModal} className="flex flex-row justify-center items-center gap-2 px-4 py-2 rounded-full bg-dark-blue">
                                 <p className='font-avenir-arabic font-bolder text-hover-blue'>التسجيل</p>
                                 <i className="ri-arrow-left-line text-2xl text-hover-blue"></i>
                             </button>
                         )}
-                        <button onClick={!user ? toggleRegistrationModal : toggleCreateAdModal} className="flex flex-row justify-center items-center gap-2 px-4 py-2 rounded-lg bg-dark-blue">
+                        <button onClick={!user ? toggleRegistrationModal : toggleCreateAdModal} className="flex flex-row justify-center items-center gap-2 px-4 py-2 rounded-full bg-dark-blue">
                             <i className="ri-add-circle-fill text-2xl text-border-lighter-blue"></i>
                             <p className='font-avenir-arabic font-bolder text-hover-blue'>إنشاء إعلان</p>
                         </button>
@@ -129,7 +129,7 @@ const Drawer = ({ isOpen, onClose }: DrawerProps) => {
                             <i className="ri-function-add-line text-2xl text-dark-blue"></i>
                             <p className='font-avenir-arabic font-bolder text-dark-blue'>جميع التصنيفات</p>
                         </div>
-                        <div className='flex flex-col justify-start gap-2 px-4 py-2 rounded-lg bg-hover-blue w-full'>
+                        <div className='flex flex-col justify-start gap-2 px-4 py-2 rounded-2xl bg-dark-blue bg-opacity-10 w-full'>
                             {categories.map((category, index) => {
                                 const isLastItem = index === categories.length - 1;
                                 return (
@@ -141,7 +141,7 @@ const Drawer = ({ isOpen, onClose }: DrawerProps) => {
                             })}
                         </div>
                         {user && (
-                            <button onClick={toggleSignOutModal} className="flex flex-row justify-center items-center gap-2 px-4 py-2 rounded-lg bg-dark-blue">
+                            <button onClick={toggleSignOutModal} className="flex flex-row justify-center items-center gap-2 px-4 py-2 rounded-full bg-dark-blue">
                                 <p className='font-avenir-arabic font-bolder text-hover-blue'>تسجيل الخروج</p>
                                 <i className="ri-logout-box-line text-2xl text-hover-blue"></i>
                             </button>

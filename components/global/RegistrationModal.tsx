@@ -186,7 +186,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                 <div className='space-y-4 p-4'>
                                     <div>
                                         <label className='block text-dark-blue text-start text-sm leading-5 mt-8 font-bold font-avenir-arabic'>رقم الجوال</label>
-                                        <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                        <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                             <div className='items-center justify-center border-l border-l-light-blue px-4'>
                                                 <p className='text-sm font-bold font-avenir-arabic text-light-blue'>+966</p>
                                             </div>
@@ -195,7 +195,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     </div>
                                     <div>
                                         <label className='block text-dark-blue text-start text-sm leading-5 mt-3 font-bold font-avenir-arabic'>البريد الإلكتروني</label>
-                                        <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                        <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                             <input
                                                 type='email'
                                                 value={email} onChange={(e) => { setEmail(e.target.value); setInvalidInput(false); }}
@@ -205,7 +205,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     </div>
                                     <div>
                                         <label className='block text-dark-blue text-start text-sm leading-5 mt-3 font-bold font-avenir-arabic'>إسم المستخدم</label>
-                                        <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                        <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                             <input
                                                 type='text'
                                                 value={username} onChange={(e) => { setUsername(e.target.value); setInvalidInput(false); }}
@@ -215,7 +215,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     </div>
                                     <div>
                                         <label className='block text-dark-blue text-start text-sm leading-5 mt-3 font-bold font-avenir-arabic'>الإسم الأول</label>
-                                        <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                        <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                             <input
                                                 type='text'
                                                 value={firstName} onChange={(e) => { setFirstName(e.target.value); setInvalidInput(false); }}
@@ -225,7 +225,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     </div>
                                     <div>
                                         <label className='block text-dark-blue text-start text-sm leading-5 mt-3 font-bold font-avenir-arabic'>الإسم الأخير</label>
-                                        <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                        <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                             <input
                                                 type='text'
                                                 value={lastName} onChange={(e) => { setLastName(e.target.value); setInvalidInput(false); }}
@@ -235,7 +235,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     </div>
                                     <div>
                                         <label className='block text-dark-blue text-start text-sm leading-5 mt-3 font-bold font-avenir-arabic'>كلمة المرور</label>
-                                        <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-2.5 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                        <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-2.5 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                             <input
                                                 type={showPassword ? 'text' : 'password'}
                                                 value={password} onChange={(e) => { setPassword(e.target.value); setInvalidInput(false); }}
@@ -247,7 +247,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                         </div>
                                     </div>
                                     <div>
-                                        <button type='submit' className='w-full rounded-lg items-center justify-center bg-dark-blue p-4 mt-12 hover:bg-opacity-80'>
+                                        <button type='submit' className='w-full rounded-full items-center justify-center bg-dark-blue p-4 mt-12 hover:bg-opacity-80'>
                                             {isSubmitting ? (
                                                 <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>جاري التسجيل ..</p>
                                             ) : (
@@ -269,7 +269,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                     <div>
                                         <div>
                                             <label className='block text-dark-blue text-start text-sm leading-5 mt-8 font-bold font-avenir-arabic'>البريد الإلكتروني</label>
-                                            <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 bg-border-lighter-blue justify-between'>
+                                            <div className='flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 bg-border-lighter-blue justify-between'>
                                                 <input
                                                     type='email'
                                                     value={email}
@@ -279,7 +279,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                             </div>
                                         </div>
                                         <div>
-                                            <button type='submit' className='w-full rounded-lg items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
+                                            <button type='submit' className='w-full rounded-full items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
                                                 <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>إستعادة كلمة المرور</p>
                                             </button>
                                         </div>
@@ -300,7 +300,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                                         <label className='block text-red-600 text-start text-sm leading-5 mt-8 font-bold font-avenir-arabic'>يرجى إدخال معطيات صحيحة</label>
                                                     )}
                                                 </div>
-                                                <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                                <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                                     <input
                                                         type='email'
                                                         value={email}
@@ -311,7 +311,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                             </div>
                                             <div>
                                                 <label className='block text-dark-blue text-start text-sm leading-5 mt-3 font-bold font-avenir-arabic'>كلمة المرور</label>
-                                                <div className={`flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-2.5 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
+                                                <div className={`flex border rounded-full overflow-hidden shadow-sm focus:outline-none mt-1 p-2.5 justify-between ${invalidInput ? 'bg-red-200 border-red-600' : 'bg-border-lighter-blue'}`}>
                                                     <input
                                                         type={showPassword ? 'text' : 'password'}
                                                         value={password}
@@ -325,7 +325,7 @@ const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }
                                                 <span onClick={toggleForgetPass} className='mt-1.5 text-start cursor-pointer leading-5 text-normal text-coolGray-400 inline-block text-sm font-bold font-avenir-arabic text-light-blue'>هل نسيت كلمة المرور؟</span>
                                             </div>
                                             <div>
-                                                <button type='submit' className='w-full rounded-lg items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
+                                                <button type='submit' className='w-full rounded-full items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
                                                     <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>تسجيل الدخول</p>
                                                 </button>
                                             </div>

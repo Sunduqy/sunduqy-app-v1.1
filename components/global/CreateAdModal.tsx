@@ -32,7 +32,7 @@ const CreateAdModal: React.FC<CreateAdModalProps> = ({ isOpen, onClose }) => {
                     </div>
                     <h1 className="text-2xl font-bolder font-avenir-arabic text-dark-blue">إعلان روكيت</h1>
                     <h2 className="text-lg font-bold font-avenir-arabic text-dark-blue text-center">تتميز إعلانات روكيت الحصول على نسبة عملاء أكثر مما يسرع من عملية البيع</h2>
-                    <a href='/create-rocket-post' className='rounded-lg items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
+                    <a href='/create-rocket-post' className='rounded-full items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
                         <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>إنشاء إعلان روكيت</p>
                     </a>
                 </div>
@@ -42,8 +42,8 @@ const CreateAdModal: React.FC<CreateAdModalProps> = ({ isOpen, onClose }) => {
                         <i className="ri-megaphone-fill text-3xl text-light-blue"></i>
                     </div>
                     <h1 className="text-2xl font-bolder font-avenir-arabic text-dark-blue">إعلان عادي</h1>
-                    <a href='/create-post' className='rounded-lg items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
-                        <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>إنشاء إعلان</p>
+                    <a href='/create-post' className='rounded-full items-center justify-center bg-dark-blue p-4 mt-4 hover:bg-opacity-80'>
+                        <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>إنشاء إعلان عادي</p>
                     </a>
                 </div>
             </div>

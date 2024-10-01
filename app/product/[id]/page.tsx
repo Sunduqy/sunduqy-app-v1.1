@@ -69,7 +69,7 @@ const ProductPage = () => {
                     setShowToast(true);
                 }
             } catch (error) {
-                setMessage('Unexpected error. Please try again later.');
+                setMessage('حدث خطأ غير متوقع! يرجى إعادة المحاولة مرة أخرى');
                 setShowToast(true);
             }
         };
@@ -122,13 +122,11 @@ const ProductPage = () => {
                     wishlists: arrayRemove(id),
                 });
                 setIsInWishlist(false);
-                console.log(`Product ID ${id} removed from wishlist`);
             } else {
                 await updateDoc(userRef, {
                     wishlists: arrayUnion(id),
                 });
                 setIsInWishlist(true);
-                console.log(`Product ID ${id} added to wishlist`);
             }
         } catch (error) {
             console.error("Error updating wishlist:", error);
@@ -339,11 +337,27 @@ const ProductPage = () => {
                     <div className='items-start justify-start gap-3 flex flex-row mt-10'>
                         {userData?.id === user?.uid ? (
                             <div className='gap-3 flex flex-row'>
-                                <button className='justify-center flex flex-row items-center py-1.5 px-3 rounded-lg bg-white border border-badge-border gap-2'>
+                                <button
+                                    onClick={async () => {
+                                        if (navigator.share) {
+                                            try {
+                                                await navigator.share({
+                                                    title: document.title, // Optional: Title of the page
+                                                    url: window.location.href, // Current page URL
+                                                });
+                                                console.log('Successfully shared');
+                                            } catch (error) {
+                                                console.error('Error sharing:', error);
+                                            }
+                                        } else {
+                                            console.log('Share API not supported in this browser');
+                                        }
+                                    }}
+                                    className='justify-center flex flex-row items-center py-1.5 px-3 rounded-full bg-white border border-badge-border gap-2'>
                                     <i className="ri-share-box-fill text-base text-dark-blue"></i>
                                     <h1 className='font-avenir-arabic font-light text-dark-blue text-sm'>نشر إعلاني</h1>
                                 </button>
-                                <button onClick={handleUpdateTimestamp} className='justify-center flex flex-row items-center py-1.5 px-3 rounded-lg bg-white border border-badge-border gap-2'>
+                                <button onClick={handleUpdateTimestamp} className='justify-center flex flex-row items-center py-1.5 px-3 rounded-full bg-white border border-badge-border gap-2'>
                                     {loading ? (
                                         <LoadingAnimation />
                                     ) : (
@@ -357,14 +371,31 @@ const ProductPage = () => {
                         ) : (
                             <div className='gap-3 flex flex-row'>
                                 <button
-                                    className='justify-center items-center py-3 px-4 rounded-lg bg-white border border-badge-border'
+                                    className='justify-center items-center py-3 px-4 rounded-full bg-white border border-badge-border'
                                     onClick={handleToggleWishlist}
                                 >
                                     <i
                                         className={`ri-bookmark-${isInWishlist ? 'fill' : 'line'} text-2xl text-dark-blue`}
                                     ></i>
                                 </button>
-                                <button className='justify-center items-center py-3 px-4 rounded-lg bg-white border border-badge-border'>
+                                <button
+                                    className="justify-center items-center py-3 px-4 rounded-full bg-white border border-badge-border"
+                                    onClick={async () => {
+                                        if (navigator.share) {
+                                            try {
+                                                await navigator.share({
+                                                    title: document.title, // Optional: Title of the page
+                                                    url: window.location.href, // Current page URL
+                                                });
+                                                console.log('Successfully shared');
+                                            } catch (error) {
+                                                console.error('Error sharing:', error);
+                                            }
+                                        } else {
+                                            console.log('Share API not supported in this browser');
+                                        }
+                                    }}
+                                >
                                     <i className="ri-share-box-fill text-2xl text-dark-blue"></i>
                                 </button>
                             </div>
