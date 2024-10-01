@@ -5,6 +5,8 @@ import './fonts.css';
 import 'remixicon/fonts/remixicon.css';
 import ClientLayout from "./ClientLayout"; // Import the client-side layout
 import { AuthProvider } from "@/components/AuthContext";
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -25,7 +27,11 @@ export default function RootLayout({
     <html lang="ar" dir="rtl">
       <body className={poppins.className}>
         <AuthProvider>
-          <ClientLayout>{children}</ClientLayout>
+          <ClientLayout>
+            <Analytics />
+            <SpeedInsights />
+            {children}
+          </ClientLayout>
         </AuthProvider>
       </body>
     </html>
