@@ -208,14 +208,12 @@ const Home = () => {
   return (
     <>
       <Head>
-        {/* Meta Tags for Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@Sunduqy" />
-        <meta name="twitter:title" content="منصة صندوقي" />
-        <meta name="twitter:description" content="بيع و شراء المستعمل" />
-        <meta name="twitter:image" content="https://res.cloudinary.com/dwh5g3rbd/image/upload/v1727879366/first-post_w5xjqq.png" />
-        <meta name="twitter:url" content="https://sunduqy.com" />
-        {/* You can add more meta tags for other social media platforms here */}
+        <meta property="twitter:domain" content="sunduqy.com" />
+        <meta property="twitter:url" content="https://www.sunduqy.com/" />
+        <meta name="twitter:title" content="منصة صندوقي | بيع و شراء المستعمل" />
+        <meta name="twitter:description" content="" />
+        <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/573e42dd-86e4-453b-b3ec-6b974cdbbc78.png?token=4cVrXQyuCLsRXm8wIF-90bJtabUpdji8j_nqHsv29Is&height=626&width=1200&expires=33263882486" />
       </Head>
       <main className="flex flex-col justify-center items-center">
         <div className="flex w-full flex-col items-center justify-center bg-[#def4ff]" dir="rtl">
