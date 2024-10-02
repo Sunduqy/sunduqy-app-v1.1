@@ -213,7 +213,7 @@ const Home = () => {
         <meta name="twitter:site" content="@Sunduqy" />
         <meta name="twitter:title" content="منصة صندوقي" />
         <meta name="twitter:description" content="بيع و شراء المستعمل" />
-        <meta name="twitter:image" content="https://pbs.twimg.com/media/GY26gezWIAAWxQF?format=jpg&name=4096x4096" />
+        <meta name="twitter:image" content="https://res.cloudinary.com/dwh5g3rbd/image/upload/v1727879366/first-post_w5xjqq.png" />
         <meta name="twitter:url" content="https://sunduqy.com" />
         {/* You can add more meta tags for other social media platforms here */}
       </Head>
