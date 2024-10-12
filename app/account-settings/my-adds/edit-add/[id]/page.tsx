@@ -236,7 +236,7 @@ const EditAdd = () => {
                 visible={showToast}
                 onClose={() => setShowToast(false)}
             />
-            <button onClick={handleSubmit} className="flex flex-row justify-center items-center bg-blue-500 hover:bg-blue-600 text-white rounded-md px-6 py-3">
+            <button onClick={handleSubmit} className="flex flex-row justify-center items-center bg-[#4DC1F2] hover:bg-[#43a8d3] duration-300 text-white font-avenir-arabic font-bolder rounded-2xl px-6 py-3">
                 {submitLoading ? <LoadingAnimation /> : 'تعديل الإعلان'}
             </button>
         </div>

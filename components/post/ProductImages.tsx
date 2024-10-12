@@ -45,10 +45,10 @@ const ProductImages: React.FC<ProductImagesProps> = ({
         <div className="flex flex-wrap flex-row gap-2 justify-start items-start">
           {localFetchedImages.map((url, index) => (
             <div key={index} className="relative">
-              <img src={url} alt={`Fetched Preview ${index}`} className="rounded-lg object-cover w-24 h-24" />
+              <img src={url} alt={`Fetched Preview ${index}`} className="rounded-2xl object-cover w-24 h-24" />
               <button
                 type="button"
-                className="absolute top-1 right-1 bg-red-600 text-white rounded-md px-2 py-1"
+                className="absolute top-1 right-1 bg-red-600 text-white rounded-xl px-2 py-1"
                 onClick={() => handleRemoveFetchedImage(index)}
               >
                 <i className="ri-delete-bin-fill"></i>

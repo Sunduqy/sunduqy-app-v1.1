@@ -178,12 +178,12 @@ const Page = () => {
                             </div>
                         </div>
                     </div>
-                    <button onClick={toggleRatingFormModal} className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#BAE6FD] border border-[#BAE6FD] my-4 rounded-lg w-full">
+                    <button onClick={toggleRatingFormModal} className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#4DC1F2] border border-[#4DC1F2] hover:bg-[#46aedb] hover:shadow-sm hover:scale-105 duration-300 my-4 rounded-2xl w-full">
                         <i className="ri-edit-circle-fill text-xl text-dark-blue"></i>
                         <h1 className='font-avenir-arabic font-light text-dark-blue text-lg'>تقييم البائع</h1>
                     </button>
                     <h3 className="text-dark-blue font-avenir-arabic font-bolder text-xl mt-3">تقييمات البائع</h3>
-                    <div className='items-center justify-start gap-2 bg-white border border-badge-border p-4 flex flex-col rounded-xl mt-2'>
+                    <div className='items-center justify-start gap-2 bg-white border border-badge-border p-4 flex flex-col rounded-2xl mt-2'>
                         {userData.ratings.length > 0 ? (
                             <>
                                 {userData.ratings.map((rating, index) => (

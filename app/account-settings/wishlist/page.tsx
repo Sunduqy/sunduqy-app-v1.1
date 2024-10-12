@@ -89,7 +89,7 @@ export default function Wishlist() {
 
   return (
     <div className='flex flex-col w-full'>
-      <h1 className='text-dark-blue font-avenir-arabic font-bolder text-xl pb-4 border-b border-b-border-light-blue'>
+      <h1 className='text-dark-blue font-avenir-arabic font-bolder text-xl pb-4 border-b lg:text-right text-center border-b-border-light-blue'>
         إعلاناتي المفضلة:
       </h1>
       {posts.length > 0 ? (

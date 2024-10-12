@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Footer = () => {
     return (
         <footer className='flex justify-center items-center flex-col m-4 lg:m-0'>
-            <div className='flex flex-col md:flex-row justify-evenly md:items-start items-center w-full bg-dark-blue rounded-xl m-4 max-w-7xl px-10 py-16 gap-4'>
+            <div className='flex flex-col md:flex-row justify-evenly md:items-start items-center w-full bg-dark-blue rounded-2xl m-4 max-w-7xl px-10 py-16 gap-4'>
                 <div className='flex flex-col'>
                     <div className='flex flex-col items-center md:items-start gap-2'>
                         <a href='/'>

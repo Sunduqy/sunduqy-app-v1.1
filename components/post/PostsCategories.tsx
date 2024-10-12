@@ -55,7 +55,7 @@ const PostsCategories: React.FC<PostsCategoriesProps> = ({ onCategorySelect, sel
       {categories.map((category) => (
         <button
           key={category.id}
-          className={`flex flex-col items-center justify-center w-full p-4 border rounded-lg transition-colors ${
+          className={`flex flex-col items-center justify-center w-full p-4 border rounded-2xl transition-colors ${
             selectedCategory?.id === category.id ? 'bg-hover-blue border-dark-blue' : 'bg-white border-gray-200 hover:bg-gray-100'
           }`}
           onClick={() => onCategorySelect(category)}

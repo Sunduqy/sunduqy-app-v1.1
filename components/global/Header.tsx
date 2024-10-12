@@ -89,45 +89,17 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
     };
 
     return (
-        <header className={`flex flex-col items-center lg:mx-0 z-30 ${headerStyling}`}>
+        <header className={`flex flex-col items-center lg:mx-0 z-30 border-b border-b-slate-200`}>
             <div className="z-50 w-full max-w-7xl items-center justify-between flex flex-row md:px-2 md:py-5 px-4 py-2">
                 <div className="flex flex-row justify-center items-center gap-3">
                     <a href="/">
                         <Image src={'/HEADER-LOGO.svg'} width={100} height={100} alt="SahmBay Logo" className="w-36 h-12" />
                     </a>
-                    {!user ? (
-                        <button
-                            onClick={toggleRegistrationModal}
-                            className="flex-row justify-center items-center gap-2 px-4 py-2 rounded-full bg-dark-blue hidden lg:flex"
-                        >
-                            <p className='font-avenir-arabic font-bolder text-border-lighter-blue'>التسجيل</p>
-                            <i className="ri-arrow-left-line text-2xl text-border-lighter-blue"></i>
-                        </button>
-                    ) : (
-                        <button
-                            onClick={toggleDropdown}
-                            className="lg:flex flex-row justify-start items-start gap-2 px-4 py-1.5 rounded-full hidden bg-dark-blue bg-opacity-10"
-                        >
-                            {isDropdownOpen && (
-                                <Dropdown options={options} onSelect={handleSelect} />
-                            )}
-                            <div className="p-0.5 rounded-full border-dark-blue border-2">
-                                <Image src={userData?.profileImage} alt="Avatar" width={46} height={46} className="w-8 h-8 rounded-full" />
-                            </div>
-                            <div className="flex flex-col item-start g-1">
-                                <p className="font-avenir-arabic font-bolder text-dark-blue text-right text-sm">{`${userData?.firstName} ${userData?.lastName}`}</p>
-                                <p dir="ltr" className="font-avenir-arabic font-light text-gray-600 items-end text-xs text-right">{user?.displayName}</p>
-                            </div>
-                            <div className="mt-2">
-                                <i className="ri-arrow-down-s-line text-lg text-dark-blue"></i>
-                            </div>
-                        </button>
-                    )}
                 </div>
 
                 {/* Search bar with dynamic suggestions */}
                 <div className="md:flex flex-row justify-center items-center gap-3 hidden">
-                    <div className="w-96 flex-row flex justify-between items-center py-2 pl-2 pr-3 rounded-full bg-white border-border-light-blue border gap-2 relative">
+                    <div className="w-[450px] flex-row flex justify-between items-center py-2 pl-2 pr-3 rounded-2xl bg-slate-50 border-border-light-blue border gap-2 relative">
                         <i className="ri-search-line text-xl text-light-blue"></i>
                         <input
                             placeholder="البحث عن ..."
@@ -136,9 +108,9 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
                             onChange={handleSearchInputChange}
                             onKeyDown={handleKeyDown} // Add onKeyDown event
                         />
-                        <button className="px-1 bg-dark-blue rounded-full items-center justify-center border border-dark-blue">
+                        {/* <button className="px-2 py-1 bg-dark-blue rounded-xl items-center justify-center border border-dark-blue">
                             <i className="ri-search-line text-white"></i>
-                        </button>
+                        </button> */}
                         {/* Suggestion dropdown */}
                         {suggestions.length > 0 && searchInput.length > 1 && (
                             <ul className="absolute top-12 left-0 w-full bg-white shadow-md rounded-md z-10">
@@ -159,7 +131,7 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
                 <div className='flex flex-row justify-center items-center gap-3'>
                     <button
                         onClick={!user ? toggleRegistrationModal : toggleCreateAdModal}
-                        className="lg:flex flex-row justify-center items-center gap-2 hidden px-4 py-2 rounded-full bg-dark-blue"
+                        className="lg:flex flex-row justify-center items-center gap-2 hidden px-4 py-2 rounded-2xl bg-dark-blue"
                     >
                         <i className="ri-add-circle-fill text-2xl text-border-lighter-blue"></i>
                         <p className='font-avenir-arabic font-bolder text-border-lighter-blue'>إنشاء إعلان</p>
@@ -170,6 +142,34 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
                     >
                         <i className="ri-menu-line text-2xl text-dark-blue"></i>
                     </button>
+                    {!user ? (
+                        <button
+                            onClick={toggleRegistrationModal}
+                            className="flex-row justify-center items-center gap-2 px-4 py-2 rounded-2xl bg-dark-blue hidden lg:flex"
+                        >
+                            <p className='font-avenir-arabic font-bolder text-border-lighter-blue'>التسجيل</p>
+                            <i className="ri-arrow-left-line text-2xl text-border-lighter-blue"></i>
+                        </button>
+                    ) : (
+                        <button
+                            onClick={toggleDropdown}
+                            className="lg:flex flex-row justify-start items-start gap-2 px-4 py-1.5 rounded-2xl hidden bg-dark-blue bg-opacity-10"
+                        >
+                            {isDropdownOpen && (
+                                <Dropdown options={options} onSelect={handleSelect} />
+                            )}
+                            <div className="p-0.5 rounded-full border-dark-blue border-2">
+                                <Image src={userData?.profileImage} alt="Avatar" width={46} height={46} className="w-8 h-8 rounded-2xl" />
+                            </div>
+                            <div className="flex flex-col item-start g-1">
+                                <p className="font-avenir-arabic font-bolder text-dark-blue text-right text-sm">{`${userData?.firstName} ${userData?.lastName}`}</p>
+                                <p dir="ltr" className="font-avenir-arabic font-light text-gray-600 items-end text-xs text-right">{user?.displayName}</p>
+                            </div>
+                            <div className="mt-2">
+                                <i className="ri-arrow-down-s-line text-lg text-dark-blue"></i>
+                            </div>
+                        </button>
+                    )}
                 </div>
             </div>
 

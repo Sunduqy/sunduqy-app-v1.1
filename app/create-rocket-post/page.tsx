@@ -240,11 +240,11 @@ export default function CreateRocketPost() {
   return (
     <div className="flex flex-col items-center lg:my-10 my-5 lg:min-h-screen min-h-full">
       <div className='flex lg:flex-row flex-col w-full max-w-7xl mx-auto px-4 gap-8 mb-10'>
-        <div className='items-start justify-start gap-2 bg-warn-badge border border-light-blue p-10 flex flex-row rounded-xl'>
+        <div className='items-start justify-start gap-2 bg-warn-badge border border-light-blue p-10 flex flex-row rounded-xl w-full'>
           <i className="ri-rocket-2-fill text-xl text-dark-blue"></i>
           <div className='flex flex-col justify-start items-start gap-1'>
             <p className='font-avenir-arabic font-bolder text-dark-blue'>قبل إنشاء إعلان روكيت</p>
-            <p className='font-avenir-arabic font-light text-dark-blue'>إعلان روكيت يتميز بقوة نشره و وصوله لعدد أكبر من المستخدمين بحيث يسرع من عملية بيع المنتجات. يرجى الأخذ بالإعتبار في ذلك أن عمولة البيع في روكيت تختلف عن البيع في الإعلانات العادية</p>
+            <p className='font-avenir-arabic font-light text-dark-blue'>إعلان روكيت يتميز بقوة نشره و وصوله لعدد أكبر من المستخدمين بحيث يسرع من عملية بيع المنتجات.</p>
           </div>
         </div>
       </div>

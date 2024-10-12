@@ -57,7 +57,7 @@ const SearchBar: React.FC<Props> = ({ }) => {
 
     return (
         <div className="flex flex-row justify-center items-center gap-3">
-            <div className="w-96 flex-row flex justify-start items-center py-1.5 px-3 rounded-full bg-white border-border-light-blue border gap-2">
+            <div className="w-96 flex-row flex justify-start items-center py-1.5 px-3 rounded-2xl bg-white border-border-light-blue border gap-2">
                 <i className="ri-search-line text-xl text-light-blue"></i>
                 <input
                     placeholder="البحث عن ..."
@@ -67,11 +67,11 @@ const SearchBar: React.FC<Props> = ({ }) => {
                     onKeyDown={handleKeyDown} // Add onKeyDown event
                 />
             </div>
-            <button className="py-1 px-2 bg-dark-blue rounded-full items-center justify-center border border-dark-blue">
+            <button className="py-1.5 px-2.5 bg-dark-blue rounded-2xl items-center justify-center border border-dark-blue">
                 <i className="ri-search-line text-xl text-border-lighter-blue"></i>
             </button>
             {suggestions.length > 0 && searchInput.length > 1 && (
-                <ul className="absolute top-[165px] left-16 w-4/5 bg-white shadow-md rounded-md z-10">
+                <ul className="absolute top-[135px] left-16 w-4/5 bg-white shadow-md rounded-md z-10">
                     {suggestions.map((keyword, index) => (
                         <li
                             key={index}

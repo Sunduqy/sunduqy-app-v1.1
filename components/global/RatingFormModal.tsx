@@ -93,7 +93,7 @@ const RatingFormModal: React.FC<RatingFormModalProps> = ({ isOpen, onClose, user
                 <div className="inline-block max-h-screen bg-white rounded-lg text-start overflow-hidden shadow-xl transform transition-all my-8 align-middle w-full max-w-md p-8 lg:m-0 m-3">
                     <div className='flex items-start justify-between'>
                         <div className='flex flex-row justify-start items-start gap-2'>
-                            <div className='flex items-center justify-center p-2 rounded-full bg-dark-blue bg-opacity-10 w-14 h-14'>
+                            <div className='flex items-center justify-center p-2 rounded-2xl bg-dark-blue bg-opacity-10 w-14 h-14'>
                                 <i className="ri-edit-circle-fill text-dark-blue text-2xl"></i>
                             </div>
                             <div className='flex flex-col justify-start gap-1'>
@@ -112,22 +112,22 @@ const RatingFormModal: React.FC<RatingFormModalProps> = ({ isOpen, onClose, user
                             placeholder='اكتب تجربتك هنا ...'
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
-                            className='block p-3 mb-4 border border-border-light-blue rounded-lg w-full sm:text-sm text-dark-blue font-bold font-avenir-arabic outline-none focus:border-border-light-blue bg-border-lighter-blue resize-none'
+                            className='block p-3 mb-4 border border-border-light-blue rounded-2xl w-full sm:text-sm text-dark-blue font-bold font-avenir-arabic outline-none focus:border-border-light-blue bg-border-lighter-blue resize-none'
                         />
                         <p className="font-avenir-arabic font-lighter text-dark-blue mb-2">هل تنصح بالتعامل مع البائع: </p>
                         <div className='flex flex-row justify-between items-center w-full gap-2 mb-4'>
-                            <button onClick={() => handleFeedback('نعم أنصح بالتعامل')} className={`flex flex-col justify-center items-center p-6 rounded-lg border border-border-light-blue ${feedback === 'نعم أنصح بالتعامل' ? 'bg-[#BAE6FD]' : 'bg-border-lighter-blue'}`}>
+                            <button onClick={() => handleFeedback('نعم أنصح بالتعامل')} className={`flex flex-col justify-center items-center p-6 rounded-2xl hover:bg-slate-100 hover:scale-105 duration-300 border border-border-light-blue ${feedback === 'نعم أنصح بالتعامل' ? 'bg-[#BAE6FD]' : 'bg-border-lighter-blue'}`}>
                                 <i className="ri-thumb-up-fill text-dark-blue text-xl"></i>
                                 <h2 className="font-light font-avenir-arabic text-dark-blue">نعم, أنصح بالتعامل</h2>
                             </button>
-                            <button onClick={() => handleFeedback('لا أنصح بالتعامل')} className={`flex flex-col justify-center items-center p-6 rounded-lg border border-border-light-blue ${feedback === 'لا أنصح بالتعامل' ? 'bg-[#BAE6FD]' : 'bg-border-lighter-blue'}`}>
+                            <button onClick={() => handleFeedback('لا أنصح بالتعامل')} className={`flex flex-col justify-center items-center p-6 rounded-2xl hover:bg-slate-100 hover:scale-105 duration-300 border border-border-light-blue ${feedback === 'لا أنصح بالتعامل' ? 'bg-[#BAE6FD]' : 'bg-border-lighter-blue'}`}>
                                 <i className="ri-thumb-down-fill text-dark-blue text-xl"></i>
                                 <h2 className="font-light font-avenir-arabic text-dark-blue">لا, لا أنصح بالتعامل</h2>
                             </button>
                         </div>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">قيم البائع من أصل 5: </p>
                         <StarRatingSlider onRatingChange={handleRatingChange} />
-                        <button onClick={handleSubmit} className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#BAE6FD] border border-[#BAE6FD] my-4 rounded-lg w-full">
+                        <button onClick={handleSubmit} className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#4DC1F2] border border-[#4DC1F2] hover:bg-[#46aedb] hover:shadow-sm hover:scale-105 duration-300 my-4 rounded-2xl w-full">
                             {submitLoading ? (
                                 <LoadingAnimation />
                             ) : (

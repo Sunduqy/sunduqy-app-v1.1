@@ -13,7 +13,7 @@ export default function accountsetting({
                         <i className="ri-user-settings-line text-2xl text-dark-blue"></i>
                         <p className='font-avenir-arabic font-bolder text-dark-blue'>الإعدادات العامة</p>
                     </div>
-                    <div className='flex flex-col justify-start px-4 py-2 rounded-lg bg-hover-blue w-full gap-4 mt-6'>
+                    <div className='flex flex-col justify-start px-4 py-2 rounded-2xl bg-dark-blue bg-opacity-10 w-full gap-4 mt-6'>
                         <a href='/account-settings' className="flex flex-row justify-between items-center p-1 cursor-pointer hover:text-light-blue group border-b border-b-border-light-blue">
                             <div className='flex flex-row justify-start items-center gap-2'>
                                 <i className="ri-user-5-fill text-xl text-dark-blue group-hover:text-light-blue"></i>
@@ -65,7 +65,7 @@ export default function accountsetting({
                         </a>
                     </div>
                 </div>
-                <div className='flex flex-grow justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue p-8 lg:w-1/4 w-full'>
+                <div className='flex flex-grow justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 px-2 py-6 lg:w-1/4 w-full'>
                     {children}
                 </div>
             </div>

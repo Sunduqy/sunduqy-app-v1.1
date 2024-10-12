@@ -36,7 +36,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
       <div className='w-full border-b border-b-border-light-blue' />
       <div className='flex flex-col gap-1 justify-start items-start w-full'>
         <p className="font-avenir-arabic font-lighter text-dark-blue">عنوان الإعلان</p>
-        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
           <input
             type='text'
             value={title}
@@ -47,7 +47,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
       </div>
       <div className='flex flex-col gap-1 justify-start items-start w-full'>
         <p className="font-avenir-arabic font-lighter text-dark-blue">وصف الإعلان</p>
-        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
           <textarea
             rows={10}
             value={description}
@@ -59,7 +59,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
       <div className='flex md:flex-row flex-col justify-between items-center gap-5 w-full'>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">حالة المنتج</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={productStatus}
               onChange={(e) => setProductStatus(e.target.value)}
@@ -74,7 +74,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
         </div>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">سنة التصنيع</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={manufacturingYear}
               onChange={(e) => setManufacturingYear(e.target.value)}
@@ -94,7 +94,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
         </div>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">المدينة</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
@@ -187,7 +187,7 @@ const BasicInfo: React.FC<BasicInfoProps> = ({
       </div>
       <div className='flex flex-col gap-1 justify-start items-start w-full'>
         <p className="font-avenir-arabic font-lighter text-dark-blue">السعر</p>
-        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
           <input
             type='number'
             value={price}

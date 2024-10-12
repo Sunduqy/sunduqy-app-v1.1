@@ -4,7 +4,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '@/app/lib/firebase';
-import LoadingAnimation from './LoadingAnimation';
+import PageLoadingAnimation from './PageLoadingAnimation';
 
 interface AuthContextProps {
     user: User | null;
@@ -47,7 +47,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return (
         <AuthContext.Provider value={{ user, userData, loading }}>
-            {loading ? <LoadingAnimation /> : children}
+            {loading ? <PageLoadingAnimation /> : children}
         </AuthContext.Provider>
     );
 };

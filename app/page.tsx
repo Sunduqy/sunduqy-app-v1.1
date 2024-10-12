@@ -161,7 +161,7 @@ const Home = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 4.5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
@@ -187,7 +187,7 @@ const Home = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
           arrows: false
         },
@@ -195,7 +195,7 @@ const Home = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1.5,
           slidesToScroll: 1,
           arrows: false
         },
@@ -216,24 +216,12 @@ const Home = () => {
         <meta name="twitter:image" content="https://opengraph.b-cdn.net/production/images/573e42dd-86e4-453b-b3ec-6b974cdbbc78.png?token=4cVrXQyuCLsRXm8wIF-90bJtabUpdji8j_nqHsv29Is&height=626&width=1200&expires=33263882486" />
       </Head>
       <main className="flex flex-col justify-center items-center">
-        <div className="flex w-full flex-col items-center justify-center bg-[#def4ff]" dir="rtl">
+        <div className="flex w-full flex-col items-center justify-center" dir="rtl">
           <div className="flex flex-col w-full max-w-7xl mx-auto px-4 py-2 mt-4 lg:hidden">
             <SearchBar />
           </div>
-          <div className="flex flex-col w-full max-w-7xl mx-auto md:px-2 px-1 py-8 lg:py-26">
-            <Slider {...catSettings} className="">
-              {categories.map((category) => (
-                <Link href={`/category/${encodeURIComponent(category.title)}`} key={category.id} className="flex flex-col items-center justify-center w-full">
-                  <div className="bg-white rounded-full flex items-center justify-center w-16 h-16 md:h-20 md:w-20 mx-auto">
-                    <i className={`ri-${category.icon} text-dark-blue md:text-4xl text-2xl`} />
-                  </div>
-                  <h3 className="text-center text-dark-blue font-avenir-arabic font-bold md:text-xl text-sm text-limit">{category.title}</h3>
-                </Link>
-              ))}
-            </Slider>
-          </div>
         </div>
-        <div className="w-full bg-[#def4ff] pb-6">
+        <div className="w-full lg:pb-6 pb-0">
           <div className="relative w-full max-w-7xl mx-auto mt-4">
             <Slider {...imgSettings}>
               {bannerImages.map((image, index) => (
@@ -244,19 +232,37 @@ const Home = () => {
                     width={1920}
                     height={600}
                     layout="responsive"
-                    className="object-cover rounded-xl"
+                    className="object-cover rounded-2xl"
                     quality={100}
                   />
                 </a>
               ))}
             </Slider>
           </div>
+          <div className="flex flex-col w-full max-w-7xl mx-auto md:px-0 px-2 py-2 lg:py-8">
+            <div className="flex flex-row justify-between items-center w-full max-w-7xl mx-auto md:px-2 px-4 py-2">
+              <div className="flex flex-row justify-start gap-1">
+                <h3 className="text-dark-blue font-avenir-arabic font-bolder md:text-3xl text-xl">تصفـح</h3>
+                <h3 className="text-[#4DC1F2] font-avenir-arabic font-bolder md:text-3xl text-xl">الأقسام</h3>
+              </div>
+            </div>
+            <Slider {...catSettings} className="">
+              {categories.map((category) => (
+                <Link href={`/category/${encodeURIComponent(category.title)}`} key={category.id} className="group flex flex-col items-center justify-center w-full">
+                  <div className="bg-[#4DC1F2] rounded-2xl flex items-center justify-center w-20 h-16 md:h-20 md:w-28 mx-auto group-hover:shadow-md shadow-[#4DC1F2] duration-300">
+                    <i className={`ri-${category.icon} text-dark-blue md:text-4xl text-2xl group-hover:scale-110 duration-300`} />
+                  </div>
+                  <h3 className="text-center text-dark-blue font-avenir-arabic font-bold md:text-xl text-sm text-limit">{category.title}</h3>
+                </Link>
+              ))}
+            </Slider>
+          </div>
         </div>
         <div className="flex flex-col w-full my-3">
-          <div className="flex flex-row justify-between items-center w-full max-w-7xl mx-auto md:px-2 md:py-5 px-4 py-2">
+          <div className="flex flex-row justify-between items-center w-full max-w-7xl mx-auto md:px-2 px-4 py-2">
             <div className="flex flex-row justify-start gap-1">
-              <i className="ri-rocket-2-fill text-2xl text-dark-blue"></i>
-              <h3 className="text-dark-blue font-avenir-arabic font-bolder text-xl">عروض روكيت</h3>
+              <h3 className="text-dark-blue font-avenir-arabic font-bolder md:text-3xl text-xl">عــروض</h3>
+              <h3 className="text-[#4DC1F2] font-avenir-arabic font-bolder md:text-3xl text-xl">روكيــت</h3>
             </div>
             <a href="/all-rocket-products" className="text-dark-blue font-avenir-arabic font-light text-lg underline">عرض الكل</a>
           </div>
@@ -264,18 +270,18 @@ const Home = () => {
             <Slider {...rocketProductsSettings}>
               {posts.filter(item => item.isRocketPost).slice(0, 15).map((item) => (
                 <Link href={`/product/${item.id}`} dir="rtl" key={item.id} className="flex flex-col items-center justify-center w-full md:px-2 px-1">
-                  <div className="relative flex flex-col justify-start rounded-lg border border-border-light-blue shadow-sm w-full lg:mt-14 mt-0 p-2">
-                    <div className="absolute right-3 top-3 z-10 bg-[#FE531F] rounded-full py-2 px-3 items-center gap-3 flex flex-row shadow-md shadow-[#FE531F]">
+                  <div className="relative flex flex-col justify-start rounded-2xl border border-border-light-blue shadow-sm w-full hover:shadow-lg hover:bg-slate-100 duration-300">
+                    {/* <div className="absolute right-3 top-3 z-10 bg-[#FE531F] rounded-xl py-2 px-3 items-center gap-3 flex flex-row shadow-md">
                       <h1 className="font-avenir-arabic font-bolder text-xs text-white">روكيت</h1>
                       <Image src={'/rocket.svg'} width={48} height={48} alt="Rocket" className="w-5 h-5" />
-                    </div>
+                    </div> */}
                     {item.images && item.images.length > 0 ? (
                       <Image
                         src={item.images[0]}
                         width={200}
                         height={200}
                         alt="Product Image"
-                        className="object-cover md:h-52 h-36 w-full rounded-lg"
+                        className="object-cover md:h-36 h-36 w-full rounded-t-2xl"
                       />
                     ) : (
                       <Image
@@ -283,12 +289,13 @@ const Home = () => {
                         width={200}
                         height={200}
                         alt="Product Image"
-                        className="object-cover md:h-52 h-36 w-full rounded-lg"
+                        className="object-cover md:h-36 h-36 w-full rounded-t-2xl"
                       />
                     )}
-                    <div className="p-3 w-full bg-white rounded-b-lg">
+                    <div className="p-3 w-full bg-transparent rounded-b-2xl">
                       <h3 className="text-dark-blue font-avenir-arabic font-bolder text-base text-limit">{item.title}</h3>
-                      <div className="flex flex-row justify-start gap-2 mt-2 w-full">
+                      <h6 className="text-light-blue font-avenir-arabic text-base text-limit">{item.description}</h6>
+                      <div className="flex flex-row justify-start gap-2 mt-6 w-full">
                         <span className="flex flex-row justify-start gap-1 items-center">
                           <i className="ri-map-pin-range-fill text-base text-light-blue"></i>
                           <p className="font-avenir-arabic font-light md:text-sm text-xs text-light-blue text-limit overflow-hidden text-ellipsis">{item.city}</p>
@@ -305,31 +312,35 @@ const Home = () => {
             </Slider>
           </div>
         </div>
-        <div className="flex flex-row justify-between items-center w-full max-w-7xl mx-auto md:px-2 md:py-5 px-4 py-2">
-          <div className="flex flex-row justify-start gap-1">
-            <i className="ri-megaphone-fill text-2xl text-dark-blue"></i>
-            <h3 className="text-dark-blue font-avenir-arabic font-bolder text-xl">أحدث الإعلانات</h3>
+        <div className="w-full md:px-2 px-4 mt-2 bg-slate-50 pt-4">
+          <div className="flex flex-row justify-between items-center max-w-7xl mx-auto">
+            <div className="flex flex-row justify-start gap-1">
+              <h3 className="text-dark-blue font-avenir-arabic font-bolder md:text-3xl text-xl">أحــدث</h3>
+              <h3 className="text-[#4DC1F2] font-avenir-arabic font-bolder md:text-3xl text-xl">الإعلانات</h3>
+            </div>
+            <a href="/all-products" className="text-dark-blue font-avenir-arabic font-light text-lg underline">عرض الكل</a>
           </div>
-          <a href="/all-products" className="text-dark-blue font-avenir-arabic font-light text-lg underline">عرض الكل</a>
         </div>
-        <div className="flex flex-wrap w-full max-w-7xl mx-auto md:px-2 md:py-5 px-3 py-2">
-          {posts.slice(0, 20).map((item) => (
-            <Link
-              href={`/product/${item.id}`}
-              dir="rtl"
-              key={item.id}
-              className="flex flex-col items-center justify-start w-full md:w-1/2 px-2 py-2"
-            >
-              <ProductCard
-                productImage={item.images}
-                productPrice={item.price}
-                productTitle={item.title}
-                productDescription={item.description}
-                city={item.city}
-                postDate={item.postDate}
-              />
-            </Link>
-          ))}
+        <div className="flex flex-wrap w-full md:px-2 md:py-5 px-3 py-2 bg-slate-50">
+          <div className="flex flex-wrap w-full mx-auto max-w-7xl">
+            {posts.slice(0, 20).map((item) => (
+              <Link
+                href={`/product/${item.id}`}
+                dir="rtl"
+                key={item.id}
+                className="flex flex-col items-center justify-start w-full md:w-1/2 px-2 py-2"
+              >
+                <ProductCard
+                  productImage={item.images}
+                  productPrice={item.price}
+                  productTitle={item.title}
+                  productDescription={item.description}
+                  city={item.city}
+                  postDate={item.postDate}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
         <FailureToast
           message={message}
@@ -341,28 +352,25 @@ const Home = () => {
   );
 };
 
-const NextArrow: React.FC<ArrowProps> = ({ onClick }) => {
+const NextArrow = ({ onClick }: ArrowProps) => {
   return (
     <div
-      className="absolute top-0 left-16 z-10 cursor-pointer"
+      className="absolute right-[-50px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white border border-slate-200 rounded-full shadow-md hover:bg-slate-100 px-2 py-1"
       onClick={onClick}
     >
-      <button className="bg-dark-blue rounded-xl w-10 h-10">
-        <i className="ri-arrow-right-s-line text-hover-blue text-lg" />
-      </button>
+      <i className="ri-arrow-right-s-line text-2xl text-dark-blue"></i>
     </div>
   );
 };
 
-const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => {
+// Custom Prev Arrow
+const PrevArrow = ({ onClick }: ArrowProps) => {
   return (
     <div
-      className="absolute top-0 left-2 z-10 cursor-pointer"
+      className="absolute left-[-50px] top-1/2 transform -translate-y-1/2 z-10 cursor-pointer bg-white border border-slate-200 rounded-full shadow-md hover:bg-slate-100 px-2 py-1"
       onClick={onClick}
     >
-      <button className="bg-dark-blue rounded-xl w-10 h-10">
-        <i className="ri-arrow-left-s-line text-hover-blue text-lg" />
-      </button>
+      <i className="ri-arrow-left-s-line text-2xl text-dark-blue"></i>
     </div>
   );
 };

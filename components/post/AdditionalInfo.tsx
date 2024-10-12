@@ -44,7 +44,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
       <div className='flex md:flex-row flex-col justify-between items-center gap-5 w-full'>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">الحالة العامة</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={generalStatus}
               onChange={(e) => setGeneralStatus(e.target.value)}
@@ -59,7 +59,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
         </div>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">الضمان</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={warranty}
               onChange={(e) => setWarranty(e.target.value)}
@@ -73,7 +73,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
         </div>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">سبب البيع</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={sellingReason}
               onChange={(e) => setSellingReason(e.target.value)}
@@ -90,7 +90,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
       <div className='flex md:flex-row flex-col justify-between items-center gap-5 w-full'>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">التوصيل والاستلام</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={deliveryMethod}
               onChange={(e) => setDeliveryMethod(e.target.value)}
@@ -104,7 +104,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
         </div>
         <div className='flex flex-col gap-1 justify-start items-start w-full'>
           <p className="font-avenir-arabic font-lighter text-dark-blue">السعر القابل للتفاوض</p>
-          <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+          <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
             <select
               value={negotiable}
               onChange={(e) => setNegotiable(e.target.value)}
@@ -119,7 +119,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
       </div>
       <div className='flex flex-col gap-1 justify-start items-start w-full'>
         <p className="font-avenir-arabic font-lighter text-dark-blue">مدة الاستخدام</p>
-        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
           <input
             type='text'
             value={usingDuration}
@@ -130,7 +130,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
       </div>
       <div className='flex flex-col gap-1 justify-start items-start w-full'>
         <p className="font-avenir-arabic font-lighter text-dark-blue">الملحقات المتوفرة</p>
-        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
           <textarea
             rows={3}
             value={accessories}
@@ -141,7 +141,7 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
       </div>
       <div className='flex flex-col gap-1 justify-start items-start w-full'>
         <p className="font-avenir-arabic font-lighter text-dark-blue">اللون </p>
-        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
           <input
             type='text'
             value={color}

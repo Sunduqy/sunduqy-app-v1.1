@@ -171,7 +171,7 @@ export default function ProfileSettings() {
                     ) : (
                         <Image src={userData?.profileImage} alt="Avatar" width={58} height={58} className="w-16 h-16 rounded-full border border-light-blue" />
                     )}
-                    <label htmlFor="fileInput" className="items-center justify-center flex flex-row gap-2 cursor-pointer rounded-md border border-x-slate-200 bg-white px-3 py-1">
+                    <label htmlFor="fileInput" className="items-center justify-center flex flex-row gap-2 cursor-pointer rounded-xl border border-x-slate-200 bg-white px-3 py-1">
                         <i className="ri-upload-cloud-fill text-dark-blue text-lg" />
                         <p className="font-avenir-arabic font-light text-dark-blue">تغيير صورة العرض</p>
                     </label>
@@ -184,7 +184,7 @@ export default function ProfileSettings() {
                 <div className='flex md:flex-row flex-col justify-between items-center gap-5'>
                     <div className='flex flex-col gap-1 justify-start items-start w-full'>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">الإسم الأول</p>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                             <input
                                 type='text'
                                 value={firstName}
@@ -195,7 +195,7 @@ export default function ProfileSettings() {
                     </div>
                     <div className='flex flex-col gap-1 justify-start items-start w-full'>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">الإسم الأخير</p>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                             <input
                                 type='text'
                                 value={lastName}
@@ -210,7 +210,7 @@ export default function ProfileSettings() {
                 <div className='flex md:flex-row flex-col justify-between items-center gap-5'>
                     <div className='flex flex-col gap-1 justify-start items-start w-full'>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">البريد الإلكتروني</p>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                             <input
                                 type='text'
                                 value={email}
@@ -221,7 +221,7 @@ export default function ProfileSettings() {
                     </div>
                     <div className='flex flex-col gap-1 justify-start items-start w-full'>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">رقم الجوال</p>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                             <input
                                 type='text'
                                 value={phoneNumber}
@@ -234,7 +234,7 @@ export default function ProfileSettings() {
             </form>
             <form onSubmit={handleProfileUpdate} className='flex flex-col gap-1 justify-start items-start w-full'>
                 <p className="font-avenir-arabic font-lighter text-dark-blue">إسم المستخدم</p>
-                <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                     <input
                         type='text'
                         value={username}
@@ -249,7 +249,7 @@ export default function ProfileSettings() {
                 <div className='flex md:flex-row flex-col justify-between items-center gap-5'>
                     <div className='flex flex-col gap-1 justify-start items-start w-full'>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">كلمة المرور الحالية</p>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 value={oldPassword}
@@ -263,7 +263,7 @@ export default function ProfileSettings() {
                     </div>
                     <div className='flex flex-col gap-1 justify-start items-start w-full'>
                         <p className="font-avenir-arabic font-lighter text-dark-blue">كلمة المرور الجديدة</p>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                             <input
                                 type={showPassword ? 'text' : 'password'}
                                 value={newPassword}
@@ -278,7 +278,7 @@ export default function ProfileSettings() {
                 </div>
             </form>
             <div>
-                <button type='submit' className='w-full rounded-lg items-center justify-center bg-dark-blue p-4 mt-12 hover:bg-opacity-80'>
+                <button type='submit' className='w-full rounded-2xl items-center justify-center bg-dark-blue p-4 mt-12 hover:bg-opacity-80'>
                     <p className='text-sm font-bold font-avenir-arabic text-border-lighter-blue'>حفظ التغييرات</p>
                 </button>
             </div>

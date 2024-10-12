@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({productImage, productPrice, productTitle, productDescription, city, postDate}) => {
     return (
-        <div className="flex flex-row justify-start rounded-lg border border-border-light-blue bg-white shadow-sm w-full overflow-hidden">
+        <div className="flex flex-row justify-start rounded-2xl border border-border-light-blue bg-white hover:bg-slate-100 hover:shadow-lg duration-300 shadow-sm w-full overflow-hidden">
             <div>
                 {productImage && productImage.length > 0 ? (
                     <Image
@@ -20,7 +20,7 @@ const ProductCard: React.FC<ProductCardProps> = ({productImage, productPrice, pr
                         width={200}
                         height={200}
                         alt="Product Image"
-                        className="object-cover md:h-36 h-36 md:w-36 w-36 rounded-lg m-2"
+                        className="object-cover md:h-36 h-36 md:w-36 w-36 rounded-2xl m-2"
                     />
                 ) : (
                     <Image
@@ -28,7 +28,7 @@ const ProductCard: React.FC<ProductCardProps> = ({productImage, productPrice, pr
                         width={200}
                         height={200}
                         alt="Product Image"
-                        className="object-cover md:h-36 h-36 md:w-36 w-36 rounded-lg p-2"
+                        className="object-cover md:h-36 h-36 md:w-36 w-36 rounded-2xl p-2"
                     />
                 )}
             </div>

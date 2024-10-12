@@ -21,7 +21,7 @@ const FailureToast: React.FC<SuccessToastProps> = ({ message, visible, duration 
   if (!visible) return null;
 
   return (
-    <div className="fixed bottom-4 mx-auto bg-red-500 text-white py-2 px-4 rounded shadow-lg flex items-center gap-5 z-50">
+    <div className="fixed bottom-4 mx-auto bg-red-500 text-white py-2 px-4 rounded-2xl shadow-lg flex items-center gap-5 z-50">
       <i className="ri-close-circle-fill text-white text-2xl"></i>
       <span className='font-avenir-arabic font-bolder text-white'>{message}</span>
       <button

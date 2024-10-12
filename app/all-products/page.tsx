@@ -182,7 +182,7 @@ const AllProducts = () => {
                         <h3 className="text-dark-blue font-avenir-arabic font-bolder text-xl">جميع الإعلانات</h3>
                     </div>
                     <div className='flex flex-row justify-start items-center gap-4'>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none p-3 justify-between bg-white w-full'>
                             <select
                                 onChange={(e) => handleCityFilterChange(e.target.value)}
                                 className='block px-3 w-full sm:text-sm text-dark-blue font-bold font-avenir-arabic border-none outline-none focus:border-transparent bg-transparent'
@@ -270,7 +270,7 @@ const AllProducts = () => {
                                 ))}
                             </select>
                         </div>
-                        <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none p-3 justify-between bg-white w-full'>
+                        <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none p-3 justify-between bg-white w-full'>
                             <select
                                 onChange={(e) => handleSortChange(e.target.value)}
                                 className='block px-3 w-full sm:text-sm text-dark-blue font-bold font-avenir-arabic border-none outline-none focus:border-transparent bg-transparent'
@@ -287,7 +287,7 @@ const AllProducts = () => {
                                 ))}
                             </select>
                         </div>
-                        <button onClick={openDrawer} className='lg:hidden flex bg-white border rounded-lg shadow-sm px-3 py-2'>
+                        <button onClick={openDrawer} className='lg:hidden flex bg-white border rounded-2xl shadow-sm px-3 py-2'>
                             <i className="ri-filter-fill text-2xl text-dark-blue"></i>
                         </button>
                     </div>

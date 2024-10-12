@@ -83,7 +83,7 @@ const ConversationButton: React.FC<StartChatButtonProps> = ({ otherParticipantId
     <>
     <button
       onClick={handleStartChat}
-      className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#BAE6FD] border border-[#BAE6FD] mt-10 rounded-full w-full"
+      className="flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#4DC1F2] border border-[#4DC1F2] hover:bg-[#46aedb] hover:shadow-sm hover:scale-105 duration-300 mt-10 rounded-2xl w-full"
       disabled={isLoading}
     >
       <i className="ri-chat-smile-fill text-xl text-dark-blue"></i>

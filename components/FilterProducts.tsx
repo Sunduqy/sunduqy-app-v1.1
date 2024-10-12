@@ -61,7 +61,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
             <div>
                 <h3 className='text-dark-blue font-avenir-arabic font-bold md:text-base text-limit"'>تحديد السعر</h3>
                 <div className='flex flex-row justify-center items-center gap-3'>
-                    <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                    <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                         <input
                             placeholder='من'
                             type='text'
@@ -70,7 +70,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                             className='block px-3 w-full sm:text-sm text-dark-blue font-bold font-avenir-arabic border-none outline-none focus:border-transparent bg-transparent'
                         />
                     </div>
-                    <div className='flex border rounded-lg overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
+                    <div className='flex border rounded-2xl overflow-hidden shadow-sm focus:outline-none mt-1 p-3 justify-between bg-white w-full'>
                         <input
                             placeholder='إلى'
                             type='text'
@@ -90,7 +90,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                             value={option}
                             checked={selectedProductStatus.includes(option)}
                             onChange={() => handleCheckboxChange(option, setSelectedProductStatus)}
-                            className="w-4 h-4 appearance-none border border-gray-300 rounded-sm checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
+                            className="w-4 h-4 appearance-none border border-gray-300 rounded-md checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
                         />
                         <svg className={`w-4 h-4 text-white absolute pointer-events-none ${selectedProductStatus.includes(option) ? 'block' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -108,7 +108,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                             value={option}
                             checked={selectedGeneralStatus.includes(option)}
                             onChange={() => handleCheckboxChange(option, setSelectedGeneralStatus)}
-                            className="w-4 h-4 appearance-none border border-gray-300 rounded-sm checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
+                            className="w-4 h-4 appearance-none border border-gray-300 rounded-md checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
                         />
                         <svg className={`w-4 h-4 text-white absolute pointer-events-none ${selectedGeneralStatus.includes(option) ? 'block' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -126,7 +126,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                             value={option}
                             checked={selectedWarranty.includes(option)}
                             onChange={() => handleCheckboxChange(option, setSelectedWarranty)}
-                            className="w-4 h-4 appearance-none border border-gray-300 rounded-sm checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
+                            className="w-4 h-4 appearance-none border border-gray-300 rounded-md checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
                         />
                         <svg className={`w-4 h-4 text-white absolute pointer-events-none ${selectedWarranty.includes(option) ? 'block' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -144,7 +144,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                             value={option}
                             checked={selectedSellingReason.includes(option)}
                             onChange={() => handleCheckboxChange(option, setSelectedSellingReason)}
-                            className="w-4 h-4 appearance-none border border-gray-300 rounded-sm checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
+                            className="w-4 h-4 appearance-none border border-gray-300 rounded-md checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
                         />
                         <svg className={`w-4 h-4 text-white absolute pointer-events-none ${selectedSellingReason.includes(option) ? 'block' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -162,7 +162,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                             value={option}
                             checked={selectedNegotiable.includes(option)}
                             onChange={() => handleCheckboxChange(option, setSelectedNegotiable)}
-                            className="w-4 h-4 appearance-none border border-gray-300 rounded-sm checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
+                            className="w-4 h-4 appearance-none border border-gray-300 rounded-md checked:bg-dark-blue checked:border-dark-blue focus:outline-none focus:ring-2 focus:ring-dark-blue focus:ring-offset-2 ml-4 cursor-pointer"
                         />
                         <svg className={`w-4 h-4 text-white absolute pointer-events-none ${selectedNegotiable.includes(option) ? 'block' : 'hidden'}`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -171,7 +171,7 @@ export default function FilterProducts({ onApplyFilters, onClearFilters }: Filte
                     </label>
                 ))}
             </div>
-            <button className='flex flex-row justify-center items-center px-4 py-2 bg-dark-blue border border-dark-blue mt-10 rounded-lg w-full' onClick={handleApplyFilters}>
+            <button className='flex flex-row justify-center items-center px-4 py-2 bg-dark-blue border border-dark-blue mt-10 rounded-2xl w-full' onClick={handleApplyFilters}>
                 <h1 className='font-avenir-arabic font-light text-hover-blue text-lg'>تنفيذ</h1>
             </button>
             <button className='flex flex-row justify-center items-center px-4 py-2 w-full' onClick={handleClearFilters}>

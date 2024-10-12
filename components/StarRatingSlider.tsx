@@ -19,6 +19,7 @@ const StarRatingSlider: React.FC<StarRatingSliderProps> = ({ onRatingChange }) =
                     key={star}
                     onClick={() => handlePress(star)}
                     style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                    className='hover:scale-105 duration-300'
                 >
                     <i className={`ri-${star <= rating ? 'star-s-fill' : 'star-s-line'} text-${star <= rating ? 'dark-blue' : 'light-blue'} text-2xl`}></i>
                 </button>

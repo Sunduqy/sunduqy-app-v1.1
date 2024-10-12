@@ -24,7 +24,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full max-w-7xl border-2 border-dashed border-border-light-blue rounded-xl py-4">
+    <div className="flex flex-col justify-center items-center w-full max-w-7xl border-2 border-dashed border-border-light-blue rounded-2xl py-4">
       <input
         type="file"
         accept="image/*"

@@ -278,7 +278,7 @@ const ProductPage = () => {
                                         alt={`Product Image ${index + 1}`}
                                         width={1920}
                                         height={1920}
-                                        className="object-cover w-full h-96 rounded-2xl"
+                                        className="object-contain w-full h-96 rounded-2xl"
                                     />
                                 </div>
                             ))}
@@ -287,13 +287,13 @@ const ProductPage = () => {
                 </div>
                 <div className='flex flex-col justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 md:w-1/4 w-full'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder text-xl'>السعر</h1>
-                    <div className='items-center justify-center gap-2 bg-white border border-badge-border p-4 flex flex-row rounded-xl mt-2'>
+                    <div className='items-center justify-center gap-2 bg-white border border-badge-border p-4 flex flex-row rounded-2xl mt-2'>
                         <h1 className='text-dark-blue font-avenir-arabic font-bolder text-2xl'>{product.price}</h1>
                         <p className='text-dark-blue font-avenir-arabic font-light text-base'>ر.س </p>
                         <i className="ri-price-tag-fill text-2xl text-dark-blue mr-3"></i>
                     </div>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder text-xl mt-3'>البائع</h1>
-                    <Link href={userData?.id === user?.uid ? '/account-settings/my-adds' : `/user-profile/${userData?.id}`} className='items-center justify-start gap-2 bg-white border border-badge-border p-4 flex flex-row rounded-xl mt-2'>
+                    <Link href={userData?.id === user?.uid ? '/account-settings/my-adds' : `/user-profile/${userData?.id}`} className='items-center justify-start gap-2 bg-white border border-badge-border hover:bg-slate-50 hover:shadow-sm hover:scale-105 duration-300 p-4 flex flex-row rounded-2xl mt-2'>
                         <div className="p-0.5 rounded-full border-dark-blue border-2">
                             <Image src={userData?.profileImage || '/images/default-avatar.png'} alt="Avatar" width={46} height={46} className="w-14 h-14 rounded-full" />
                         </div>
@@ -308,7 +308,7 @@ const ProductPage = () => {
                             </div>
                         </div>
                     </Link>
-                    <div className='items-start justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-xl mt-10'>
+                    <div className='items-start justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-2xl mt-10'>
                         <i className="ri-shield-check-fill text-xl text-dark-blue"></i>
                         <div className='flex flex-col justify-start items-start gap-1'>
                             <p className='font-avenir-arabic font-bolder text-dark-blue'>خلك نبيه !</p>
@@ -316,9 +316,9 @@ const ProductPage = () => {
                         </div>
                     </div>
                     {userData?.id === user?.uid ? (
-                        <a href={`/account-settings/my-adds/edit-add/${product.id}`} className='flex flex-row justify-center items-center px-4 py-2 gap-2 bg-dark-blue border border-dark-blue mt-10 rounded-lg w-full'>
-                            <i className="ri-edit-circle-fill text-xl text-hover-blue"></i>
-                            <h1 className='font-avenir-arabic font-light text-hover-blue text-lg'>تعديل إعلاني</h1>
+                        <a href={`/account-settings/my-adds/edit-add/${product.id}`} className='flex flex-row justify-center items-center px-4 py-2 gap-2 bg-[#4DC1F2] border border-[#4DC1F2] hover:bg-[#46aedb] hover:shadow-sm hover:scale-105 duration-300 mt-10 rounded-2xl w-full'>
+                            <i className="ri-edit-circle-fill text-xl text-white"></i>
+                            <h1 className='font-avenir-arabic font-light text-white text-lg'>تعديل إعلاني</h1>
                         </a>
                     ) : (
                         <div className='flex flex-col w-full'>
@@ -353,11 +353,11 @@ const ProductPage = () => {
                                             console.log('Share API not supported in this browser');
                                         }
                                     }}
-                                    className='justify-center flex flex-row items-center py-1.5 px-3 rounded-full bg-white border border-badge-border gap-2'>
+                                    className='justify-center flex flex-row items-center py-1.5 px-3 rounded-2xl bg-white border border-badge-border gap-2'>
                                     <i className="ri-share-box-fill text-base text-dark-blue"></i>
                                     <h1 className='font-avenir-arabic font-light text-dark-blue text-sm'>نشر إعلاني</h1>
                                 </button>
-                                <button onClick={handleUpdateTimestamp} className='justify-center flex flex-row items-center py-1.5 px-3 rounded-full bg-white border border-badge-border gap-2'>
+                                <button onClick={handleUpdateTimestamp} className='justify-center flex flex-row items-center py-1.5 px-3 rounded-2xl bg-white border border-badge-border gap-2'>
                                     {loading ? (
                                         <LoadingAnimation />
                                     ) : (
@@ -371,7 +371,7 @@ const ProductPage = () => {
                         ) : (
                             <div className='gap-3 flex flex-row'>
                                 <button
-                                    className='justify-center items-center py-3 px-4 rounded-full bg-white border border-badge-border'
+                                    className='justify-center items-center py-3 px-4 rounded-2xl hover:bg-slate-50 hover:shadow-sm hover:scale-95 duration-300 bg-white border border-badge-border'
                                     onClick={handleToggleWishlist}
                                 >
                                     <i
@@ -379,7 +379,7 @@ const ProductPage = () => {
                                     ></i>
                                 </button>
                                 <button
-                                    className="justify-center items-center py-3 px-4 rounded-full bg-white border border-badge-border"
+                                    className="justify-center items-center py-3 px-4 rounded-2xl hover:bg-slate-50 hover:shadow-sm hover:scale-95 duration-300 bg-white border border-badge-border"
                                     onClick={async () => {
                                         if (navigator.share) {
                                             try {
@@ -432,7 +432,7 @@ const ProductPage = () => {
                 <div className='flex flex-col justify-start bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 md:w-1/4 w-full'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder lg:text-2xl text-xl'>نوع التوصيل</h1>
                     {product.deliveryMethod === 'التوصيل يد بيد' ? (
-                        <div className='items-center justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-xl mt-10'>
+                        <div className='items-center justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-2xl mt-10'>
                             <i className="ri-shake-hands-fill text-3xl text-dark-blue"></i>
                             <div className='flex flex-col justify-start items-start gap-1'>
                                 <p className='font-avenir-arabic font-bolder text-dark-blue'>التوصيل يد بيد</p>
@@ -440,7 +440,7 @@ const ProductPage = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className='items-center justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-xl mt-10'>
+                        <div className='items-center justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-2xl mt-10'>
                             <i className="ri-truck-fill text-3xl text-dark-blue"></i>
                             <div className='flex flex-col justify-start items-start gap-1'>
                                 <p className='font-avenir-arabic font-bolder text-dark-blue'>التوصيل بالشحن</p>
@@ -453,7 +453,7 @@ const ProductPage = () => {
             <div className='flex flex-row w-full max-w-7xl mx-auto md:px-2 md:py-5 px-1 py-2 gap-10'>
                 <div className='flex-grow flex-col justify-start bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 w-full'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder lg:text-2xl text-xl'>الوصف</h1>
-                    <div className='justify-center items-start py-3 px-4 rounded-lg bg-white border border-badge-border mt-4'>
+                    <div className='justify-center items-start py-3 px-4 rounded-2xl bg-white border border-badge-border mt-4'>
                         <pre className='text-dark-blue font-avenir-arabic font-light lg:text-xl text-base overflow-hidden whitespace-pre-wrap'>{product.description}</pre>
                     </div>
                 </div>
@@ -479,7 +479,7 @@ const NextArrow: React.FC<ArrowProps> = ({ onClick }) => {
             className="absolute top-[50%] right-0 z-2 cursor-pointer"
             onClick={onClick}
         >
-            <button className="bg-dark-blue rounded-full w-10 h-10">
+            <button className="bg-dark-blue rounded-full w-10 h-10 hover:bg-dark-blue hover:bg-opacity-85 hover:shadow-sm hover:scale-105 duration-300">
                 <i className="ri-arrow-right-s-line text-hover-blue text-lg" />
             </button>
         </div>
@@ -492,7 +492,7 @@ const PrevArrow: React.FC<ArrowProps> = ({ onClick }) => {
             className="absolute top-[50%] left-0 z-2 cursor-pointer"
             onClick={onClick}
         >
-            <button className="bg-dark-blue rounded-full w-10 h-10">
+            <button className="bg-dark-blue rounded-full w-10 h-10 hover:bg-dark-blue hover:bg-opacity-85 hover:shadow-sm hover:scale-105 duration-300">
                 <i className="ri-arrow-left-s-line text-hover-blue text-lg" />
             </button>
         </div>
