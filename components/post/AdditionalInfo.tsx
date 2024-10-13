@@ -97,8 +97,8 @@ const AdditionalInfo: React.FC<AdditionalInfoProps> = ({
               className='block px-3 w-full sm:text-sm text-dark-blue font-bold font-avenir-arabic border-none outline-none focus:border-transparent bg-transparent'
             >
               <option value="" disabled hidden>اختر خيارًا</option>
-              <option value='التوصيل عن طريق البائع'>التوصيل عن طريق البائع</option>
-              <option value='التوصيل عن طريق مستر صندوق'>التوصيل عن طريق مستر صندوق</option>
+              <option value='التوصيل يد بيد'>التوصيل يد بيد</option>
+              <option value='التوصيل عن طريق الشحن'>التوصيل عن طريق الشحن</option>
             </select>
           </div>
         </div>
