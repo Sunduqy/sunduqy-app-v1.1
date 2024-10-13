@@ -229,7 +229,7 @@ const ProductPage = () => {
     return (
         <div className='flex flex-col justify-center items-center lg:m-0 m-5'>
             <div className='flex lg:flex-row flex-col w-full max-w-7xl mx-auto md:px-2 md:py-5 px-1 py-2 gap-10'>
-                <div className='lg:flex flex-col justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue p-8 hidden'>
+                <div className='md:flex flex-col justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue p-8 hidden'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder text-2xl'>{product.title}</h1>
                     <div className="flex flex-row justify-start gap-2 mt-2">
                         <span className="flex flex-row justify-start gap-1 items-center">
@@ -285,7 +285,7 @@ const ProductPage = () => {
                         </Slider>
                     </div>
                 </div>
-                <div className='flex flex-col justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 md:w-1/4 w-full'>
+                <div className='flex flex-col justify-center bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 lg:w-1/4 w-full'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder text-xl'>السعر</h1>
                     <div className='items-center justify-center gap-2 bg-white border border-badge-border p-4 flex flex-row rounded-2xl mt-2'>
                         <h1 className='text-dark-blue font-avenir-arabic font-bolder text-2xl'>{product.price}</h1>
@@ -407,17 +407,22 @@ const ProductPage = () => {
                 <div className='flex-grow flex-col justify-start bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder lg:text-2xl text-xl'>مواصفات المنتج</h1>
                     <div className="w-full border-b border-b-border-light-blue mt-6" />
-                    {details.slice(0, isExpanded ? details.length : 4).map((item, index) => (
-                        <React.Fragment key={index}>
-                            <div className='flex flex-row items-start gap-4 my-2'>
-                                <h1 className='text-dark-blue font-avenir-arabic font-bold lg:text-xl text-lg'>{item.label}</h1>
-                                <h1 className='text-light-blue font-avenir-arabic font-light lg:text-xl text-lg'>{item.value}</h1>
-                            </div>
-                            <div className="w-full border-b border-b-border-light-blue" />
-                        </React.Fragment>
-                    ))}
+                    <div
+                        className={`transition-max-height duration-500 ease-in-out overflow-hidden`}
+                        style={{ maxHeight: isExpanded ? '1000px' : '200px' }}
+                    >
+                        {details.slice(0, isExpanded ? details.length : 4).map((item, index) => (
+                            <React.Fragment key={index}>
+                                <div className='flex flex-row items-start gap-4 my-2'>
+                                    <h1 className='text-dark-blue font-avenir-arabic font-bold lg:text-xl text-lg'>{item.label}</h1>
+                                    <h1 className='text-light-blue font-avenir-arabic font-light lg:text-xl text-lg'>{item.value}</h1>
+                                </div>
+                                <div className="w-full border-b border-b-border-light-blue" />
+                            </React.Fragment>
+                        ))}
+                    </div>
                     <button
-                        className='text-dark-blue font-avenir-arabic font-bold text-xl mt-4'
+                        className='text-dark-blue font-avenir-arabic font-bold text-xl mt-4 flex items-center'
                         onClick={handleToggle}
                     >
                         {isExpanded ? 'عرض أقل' : 'عرض الكل'}
@@ -426,10 +431,9 @@ const ProductPage = () => {
                         ) : (
                             <i className="ri-arrow-down-s-line text-2xl text-dark-blue"></i>
                         )}
-
                     </button>
                 </div>
-                <div className='flex flex-col justify-start bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 md:w-1/4 w-full'>
+                <div className='flex flex-col justify-start bg-border-lighter-blue border rounded-2xl border-hover-blue lg:p-8 p-6 lg:w-1/4 w-full'>
                     <h1 className='text-dark-blue font-avenir-arabic font-bolder lg:text-2xl text-xl'>نوع التوصيل</h1>
                     {product.deliveryMethod === 'التوصيل يد بيد' ? (
                         <div className='items-center justify-start gap-2 bg-warn-badge border border-light-blue p-4 flex flex-row rounded-2xl mt-10'>

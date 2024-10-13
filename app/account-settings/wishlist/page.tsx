@@ -96,7 +96,7 @@ export default function Wishlist() {
         <>
           {posts.map((post) => (
             <div className='flex py-2' key={post.id}>
-              <div className='gap-6 flex'>
+              <div className='gap-6 flex flex-grow'>
                 <Link
                   href={`/product/${post.id}`}
                   dir="rtl"

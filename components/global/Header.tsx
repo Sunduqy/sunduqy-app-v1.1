@@ -89,8 +89,8 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
     };
 
     return (
-        <header className={`flex flex-col items-center lg:mx-0 z-30 border-b border-b-slate-200`}>
-            <div className="z-50 w-full max-w-7xl items-center justify-between flex flex-row md:px-2 md:py-5 px-4 py-2">
+        <header className={`flex flex-col items-center md:mx-0 z-30 border-b border-b-slate-200`}>
+            <div className="z-50 w-full max-w-7xl items-center justify-between flex flex-row md:px-2 md:py-2 px-4 py-2">
                 <div className="flex flex-row justify-center items-center gap-3">
                     <a href="/">
                         <Image src={'/HEADER-LOGO.svg'} width={100} height={100} alt="SahmBay Logo" className="w-36 h-12" />
@@ -131,21 +131,21 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
                 <div className='flex flex-row justify-center items-center gap-3'>
                     <button
                         onClick={!user ? toggleRegistrationModal : toggleCreateAdModal}
-                        className="lg:flex flex-row justify-center items-center gap-2 hidden px-4 py-2 rounded-2xl bg-dark-blue"
+                        className="md:flex flex-row justify-center items-center gap-2 hidden px-4 py-2 rounded-2xl bg-dark-blue"
                     >
                         <i className="ri-add-circle-fill text-2xl text-border-lighter-blue"></i>
                         <p className='font-avenir-arabic font-bolder text-border-lighter-blue'>إنشاء إعلان</p>
                     </button>
                     <button
                         onClick={onOpenDrawer}
-                        className="flex items-center justify-center lg:hidden"
+                        className="flex items-center justify-center md:hidden"
                     >
                         <i className="ri-menu-line text-2xl text-dark-blue"></i>
                     </button>
                     {!user ? (
                         <button
                             onClick={toggleRegistrationModal}
-                            className="flex-row justify-center items-center gap-2 px-4 py-2 rounded-2xl bg-dark-blue hidden lg:flex"
+                            className="flex-row justify-center items-center gap-2 px-4 py-2 rounded-2xl bg-dark-blue hidden md:flex"
                         >
                             <p className='font-avenir-arabic font-bolder text-border-lighter-blue'>التسجيل</p>
                             <i className="ri-arrow-left-line text-2xl text-border-lighter-blue"></i>
@@ -153,7 +153,7 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
                     ) : (
                         <button
                             onClick={toggleDropdown}
-                            className="lg:flex flex-row justify-start items-start gap-2 px-4 py-1.5 rounded-2xl hidden bg-dark-blue bg-opacity-10"
+                            className="md:flex flex-row justify-start items-start gap-2 px-4 py-1.5 rounded-2xl hidden bg-dark-blue bg-opacity-10"
                         >
                             {isDropdownOpen && (
                                 <Dropdown options={options} onSelect={handleSelect} />
@@ -166,7 +166,7 @@ const Header = ({ onOpenDrawer }: HeaderProps) => {
                                 <p dir="ltr" className="font-avenir-arabic font-light text-gray-600 items-end text-xs text-right">{user?.displayName}</p>
                             </div>
                             <div className="mt-2">
-                                <i className="ri-arrow-down-s-line text-lg text-dark-blue"></i>
+                                <i className="ri-arrow-down-s-line text-md text-dark-blue"></i>
                             </div>
                         </button>
                     )}

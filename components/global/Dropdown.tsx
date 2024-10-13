@@ -19,7 +19,7 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 
     return (
         <div className="absolute inline-block text-right z-10">
-            <div className="origin-top-right absolute mt-14 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+            <div className="origin-top-right absolute mt-14 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                 <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                     {options.map((option) => (
                         <a

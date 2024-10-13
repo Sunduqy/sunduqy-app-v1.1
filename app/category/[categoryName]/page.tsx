@@ -48,6 +48,8 @@ const CategoryPage = () => {
     speed: 500,
     slidesToShow: 1,
     autoplay: true,
+    nextArrow: <></>,
+    prevArrow: <></>,
     autoplaySpeed: 5000,
     slidesToScroll: 1,
     customPaging: (i: number) => (

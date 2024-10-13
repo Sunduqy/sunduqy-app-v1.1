@@ -165,15 +165,16 @@ const Home = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    nextArrow: <></>,
+    prevArrow: <></>,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3.5,
           slidesToScroll: 1,
           infinite: true,
+          arrows: false,
         },
       },
       {
@@ -217,7 +218,7 @@ const Home = () => {
       </Head>
       <main className="flex flex-col justify-center items-center">
         <div className="flex w-full flex-col items-center justify-center" dir="rtl">
-          <div className="flex flex-col w-full max-w-7xl mx-auto px-4 py-2 mt-4 lg:hidden">
+          <div className="flex flex-col w-full max-w-7xl mx-auto px-4 py-2 mt-4 md:hidden">
             <SearchBar />
           </div>
         </div>
